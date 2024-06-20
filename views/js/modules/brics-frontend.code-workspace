@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"name": "brics-frontend",
+			"path": "../../.."
+		},
+		{
+			"name": "brics",
+			"path": "../../../../brics"
+		},
+		{
+			"name": "loader",
+			"path": "../../../../tests/loader"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "brics-frontend"
+	}
+}

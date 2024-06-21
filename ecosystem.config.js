@@ -1,6 +1,6 @@
 module.exports = {
   apps : [{
-    name   : "brics",
+    name   : "brics-front",
     script : "./dist/index.js",
     watch: true
   }]

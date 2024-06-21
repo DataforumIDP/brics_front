@@ -16,6 +16,7 @@ app.get("/attendees", (req: Request, res: Response) => {
     const p = path.join(__dirname, '../views/attendees.html')
     res.sendFile(p)
 });
+
 app.get("/technicians", (req: Request, res: Response) => {
 
     const p = path.join(__dirname, '../views/technicians.html')
@@ -28,12 +29,16 @@ app.get("/parser", (req: Request, res: Response) => {
     res.sendFile(p)
 });
 
+app.post('/api/test', (req, res) => {
+    res.json({status: 'ok'})
+})
+
 app.get('*.*', (req, res) => {
     const filePath = path.join(__dirname, 'views', req.path);
     res.sendFile(filePath, (err) => {
         if (err) {
             console.error(`File not found: ${filePath}`);
-            res.status(404).send('File not found');
+            res.status(401).send('File not found');
         }
     });
 });

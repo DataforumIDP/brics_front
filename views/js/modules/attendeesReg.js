@@ -4,9 +4,13 @@ import { openModal } from "./modal.js"
 import { getData } from "./regData.js"
 
 const titles = {
-    success: {
+    success_a: {
         ru: 'Успешная регистрация',
         en: 'Successful registration'
+    },
+    success_t: {
+        ru: 'Ваша заявка принята. Ожидайте, пожалуйста, мы с вами свяжемся',
+        en: 'Your application has been accepted. Please wait, we will contact you'
     },
     error: {
         ru: 'Ошибка регистрации',
@@ -41,7 +45,7 @@ export async function userReg() {
 
 
     $('.modal__error').remove()
-    $('.modal__title').text(titles.success[getLang()])
+    $('.modal__title').text(getData('type') == 'attendees' ? titles.success_a[getLang()] : titles.success_t[getLang()])
     openModal('.modal')
 
 }

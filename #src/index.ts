@@ -11,6 +11,8 @@ app.use(cors());
 app.use(express.static('views'));
 
 app.get("/attendees", (req: Request, res: Response) => {
+    console.log(1234);
+    
     const p = path.join(__dirname, '../views/attendees.html')
     res.sendFile(p)
 });

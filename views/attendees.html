@@ -18,7 +18,14 @@
             <div class="decor">
                 <h1 class="decor__title">BRICS Future Forum. Cloud City</h1>
                 <h2 class="decor__subtitle">September 18 — 19, 2024</h2>
-                <div class="decor__img"></div>
+                <div class="decor__img">
+                </div>
+                <div class="decor__bg">
+                    <video autoplay muted loop>
+                        <source src="./img/bricks_v2.webm" type="video/webm">
+                        Ваш браузер не поддерживает тег <code>video</code>.
+                    </video>
+                </div>
                 <p class="decor__text">Moscow, Zaryadye Moscow Concert Hall</p>
                 <div class="decor__companies">
                     <div class="company mos"></div>
@@ -39,9 +46,6 @@
                         <div class="form__input input">
                             <input type="text" class="input__inp" id="fio" placeholder="Last name First name">
                         </div>
-                        <div class="form__input input">
-                            <input type="text" class="input__inp" id="passport" placeholder="Last name First name">
-                        </div>
                         <div class="form__input input org">
                             <input type="text" class="input__inp" id="organization" placeholder="Last name First name">
                             <div class="org-list list --none">
@@ -53,22 +57,29 @@
                                 <div class="list__item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod doloribus iure laudantium eius in laboriosam unde labo</div>
                             </div>
                         </div>
-                        <div class="form__input input">
+                        <div class="form__input input type">
+                            <input type="text" class="input__inp" id="type" readonly placeholder="Type of user">
+                            <div class="type-list list --none">
+                                <div d-type="attendees" class="list__item type-i">Участник</div>
+                                <div d-type="smi" class="list__item type-i">СМИ</div>
+                                <div d-type="speacker" class="list__item type-i">Спикер</div>
+                            </div>
+                        </div>
+                        <div class="form__input input --over">
                             <input type="text" class="input__inp" id="grade" placeholder="Last name First name">
                         </div>
-                        <div class="form__input input">
+                        <div class="form__input input --over">
                             <input type="text" class="input__inp" id="country" placeholder="Last name First name">
                         </div>
-                        <div class="form__input input">
+                        <div class="form__input input --over">
                             <input type="text" class="input__inp" id="city" placeholder="Last name First name">
                         </div>
-                        <div class="form__input input">
+                        <div class="form__input input --over">
                             <input type="text" class="input__inp" id="email" placeholder="Last name First name">
                         </div>
-                        <div class="form__input input">
+                        <div class="form__input input --over">
                             <input type="text" class="input__inp" id="phone" placeholder="Last name First name">
                         </div>
-
                         <div class="politics">
                             <div class="checkbox"></div>
                             <div class="politics__title">Даю согласие на обработку моих персональных данных. <a href="#">Политика конфиденциальности</a></div>

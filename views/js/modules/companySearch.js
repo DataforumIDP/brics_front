@@ -18,7 +18,7 @@ export async function inputLogic() {
 
 $(document).on('click', '.org-list .list__item', function () {
     $(organization).val($(this).attr('d-val'))
-    $('.list__item').remove()
+    $('.org-list .list__item').remove()
     $('.org-list').addClass('--none')
     setData('organization', $(this).attr('d-inn'))
 })

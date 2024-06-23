@@ -3,6 +3,7 @@ import cors from "cors";
 
 import path from "path";
 import cookieParser from "cookie-parser";
+import axios from "axios";
 global.uploadDir = path.join(__dirname, "uploads_files");
 
 const app = express();
@@ -17,9 +18,15 @@ app.get("/attendees", (req: Request, res: Response) => {
     res.sendFile(p)
 });
 
-app.get("/lk", (req: Request, res: Response) => {
-    const p = path.join(__dirname, '../views/lk.html')
-    res.sendFile(p)
+app.get("/lk", async (req: Request, res: Response) => {
+    const type = await userType(req.cookies.token)
+    console.log(type);
+    
+    let htmlPath = ''
+    if (!type) htmlPath = path.join(__dirname, '../views/login.html')
+    if (type === 'partner') htmlPath = path.join(__dirname, '../views/partner.html')
+    if (type === 'org') htmlPath = path.join(__dirname, '../views/org.html')
+    res.sendFile(htmlPath)
 });
 
 app.get('*.*', (req, res) => {
@@ -38,3 +45,20 @@ const PORT = 3226;
 app.listen(PORT, () => {
     console.log("Server started on port: " + PORT);
 });
+
+async function userType (token: string): Promise<string | null> {
+    console.log(token);
+    
+    return new Promise (async resolve => {
+        try {
+            const result = await axios.post('https://brics.wpdataforum.ru/api/authorize/type', {}, {
+                headers: { Authorization: `Bearer ${token}` }
+            })
+            resolve(result.data.type)
+        } catch (e: any){
+            console.log(e.response.data.errors);
+            
+            resolve(null)
+        }
+    })
+}

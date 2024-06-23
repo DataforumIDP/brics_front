@@ -2,36 +2,25 @@ import express, { Request, Response } from "express";
 import cors from "cors";
 
 import path from "path";
+import cookieParser from "cookie-parser";
 global.uploadDir = path.join(__dirname, "uploads_files");
 
 const app = express();
 
 app.use(cors());
-
+app.use(cookieParser())
 app.use(express.static('views'));
 
 app.get("/attendees", (req: Request, res: Response) => {
-    console.log(1234);
     
     const p = path.join(__dirname, '../views/attendees.html')
     res.sendFile(p)
 });
 
-app.get("/technicians", (req: Request, res: Response) => {
-
-    const p = path.join(__dirname, '../views/technicians.html')
+app.get("/lk", (req: Request, res: Response) => {
+    const p = path.join(__dirname, '../views/lk.html')
     res.sendFile(p)
 });
-
-app.get("/parser", (req: Request, res: Response) => {
-
-    const p = path.join(__dirname, '../views/parser.html')
-    res.sendFile(p)
-});
-
-app.post('/api/test', (req, res) => {
-    res.json({status: 'ok'})
-})
 
 app.get('*.*', (req, res) => {
     const filePath = path.join(__dirname, 'views', req.path);

@@ -617,11 +617,7 @@ $index: calc(1vw + 1vh);
             text-overflow: ellipsis;
             &:hover {
                 border-radius: 22px;
-                background: #e9e7ef;
-                box-shadow: -4px 4px 8px 0px rgba(151, 150, 155, 0.2),
-                    4px -4px 8px 0px rgba(151, 150, 155, 0.2),
-                    -4px -4px 8px 0px rgba(255, 255, 255, 0.9),
-                    4px 4px 10px 0px rgba(151, 150, 155, 0.9);
+                color: #3769FA;
                 cursor: pointer;
             }
 

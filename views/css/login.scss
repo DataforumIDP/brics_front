@@ -1,0 +1,51 @@
+
+$index: calc(1vw + 1vh);
+
+.content {
+    .form {
+        &__decor {
+            margin-bottom: 30px;
+        }
+        &__btn {
+            margin-top: 30px;
+        }
+        height: auto;
+        padding: calc($index * 2) 45px;
+    }
+
+    .conteiner {
+        align-items: center;
+    }
+}
+
+#login, #password {
+    padding-left: 65px;
+}
+
+.--login, .--pass {
+    position: relative;
+    &::after {
+        content: '';
+        width: 20px;
+        aspect-ratio: 1;
+        position: absolute;
+        top: calc(50% - 10px);
+        left: 24px;
+        z-index: 11;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    input {
+        position: relative;
+        z-index: 10;
+    }
+
+}
+
+.--login::after {
+    background-image: url('../img/logIn/user.svg');
+}
+.--pass::after {
+    background-image: url('../img/logIn/pass.svg');
+}

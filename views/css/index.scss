@@ -300,6 +300,7 @@ $index: calc(1vw + 1vh);
         // .form__btn
 
         &__btn {
+            margin-top: calc($index * 0.25);
             &::after {
                 content: "";
                 position: absolute;
@@ -681,6 +682,7 @@ $index: calc(1vw + 1vh);
         height: 100%;
         z-index: 2;
     }
+    
 }
 
 .modal {

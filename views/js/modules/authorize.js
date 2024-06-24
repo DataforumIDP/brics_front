@@ -6,6 +6,7 @@ export async function authorize() {
     const [res, err] = await sendRequest(getData())
     if (res === null) return displayError(Object.values(err))
     document.cookie = `token=${res.token}`
+    localStorage.setItem('token', res.token)
     location.reload()
 }
 

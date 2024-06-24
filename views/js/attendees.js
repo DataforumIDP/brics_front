@@ -27,8 +27,20 @@ $(city).on('input', function () { setData('city', $(this).val()) })
 $(email).on('input', function () { setData('mail', $(this).val()) })
 $(phone).on('input', function () { setData('phone', $(this).val()) })
 
-$(type).on('focus', ()=>{$('.type-list').removeClass('--none')})
-// $(type).on('blur', ()=>{$('.type-list').addClass('--none')})
+$(type).on('focus', (e)=>{
+    e.preventDefault()
+    $('.type-list').removeClass('--none')
+})
+
+$(type).on('click', function(e){
+    e.stopPropagation();    
+})
+
+$(window).click(function(event) {
+    if (!$(event.target).closest('.type-list, .list__item').length) {
+        $('.type-list').addClass('--none')
+    }
+});
 
 $(".org-list, .type-list").overlayScrollbars({
     className: "os-theme-dark",
@@ -39,10 +51,8 @@ $(document).on('click', '.type-list .list__item', function(){
     const val = $(this).attr('d-type')
     $(type).val(text)
     setData('type', val)
-    $('.type-list').addClass('--none    ')
+    $('.type-list').addClass('--none')
 })
-
-// $('.type-list .os-content').append(`cdkljl jvl kj`)
 
 $('.form__btn').click(async function () {
     $(this).addClass('--sending')

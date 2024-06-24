@@ -28,9 +28,10 @@ $index: calc(1vw + 1vh);
         border-radius: 60px;
         background: #e9e7ef;
         box-shadow: -14px -14px 28px 0px rgba(255, 255, 255, 0.9),
-        14px 14px 35px 0px rgba(184, 182, 189, 0.9);
+            14px 14px 35px 0px rgba(184, 182, 189, 0.9);
         padding: 55px 70px;
         display: flex;
+        justify-content: space-between;
         align-items: stretch;
         gap: 55px;
         position: relative;
@@ -71,11 +72,11 @@ $index: calc(1vw + 1vh);
     }
 }
 .content {
-
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding-top: calc($index * 1);
+    max-width: calc(70% - 55px);
     // .content__title
 
     &__title {
@@ -106,7 +107,6 @@ $index: calc(1vw + 1vh);
     }
 
     &__text {
-
     }
     // .content__btns
 
@@ -164,7 +164,15 @@ $index: calc(1vw + 1vh);
         font-style: normal;
         font-weight: 400;
         line-height: 30px; /* 200% */
+        .empty {
+            display: block;
+            height: 30px;
+        }
     }
+}
+
+.inputs {
+    overflow: auto;
 }
 
 .exit {
@@ -198,21 +206,26 @@ $index: calc(1vw + 1vh);
         top: 0;
         left: calc(50% - 60px);
         cursor: pointer;
-        
+        &:hover .exit__ico {
+            background-color: #A1C5E5;
+        }
     }
 
     // .exit__ico
 
     &__ico {
-        width: 100px;
+        width: 90px;
         aspect-ratio: 1;
-        background-image: url(../img/partner/exit.svg);
-        background-position: center;
+        background-color: #88A5BF;
+        border-radius: 50%;
+        background-image: url(../img/partner/exit.png);
+        background-position: 27px 25px;
         background-repeat: no-repeat;
-        background-size: contain;
+        background-size: 50%;
         position: absolute;
-        bottom: 10px;
-        left: calc(50% - 50px);
+        bottom: 15px;
+        left: calc(50% - 45px);
+        transition: all .5s ease;
     }
 }
 
@@ -235,8 +248,12 @@ $index: calc(1vw + 1vh);
     position: relative;
     overflow: hidden;
     cursor: pointer;
+    transition: all 0.5s ease;
     &:hover &__grad {
         opacity: 0;
+    }
+    &:hover {
+        background: #f1f0f6;
     }
     span {
         position: relative;
@@ -271,7 +288,7 @@ $index: calc(1vw + 1vh);
     &.--blue {
         background: #3769fa;
         color: #fff;
-        transition: all 0.5s ease;
+        
         &:hover {
             background: #537fff;
         }
@@ -299,7 +316,8 @@ $index: calc(1vw + 1vh);
 }
 
 .material {
-    flex: 1 1 calc($index * 20);
+    flex: 1 1 calc($index * 10);
+    max-width: calc($index * 10);
     aspect-ratio: 515/684;
     background-repeat: no-repeat;
     background-position: center;

@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="./css/partner.css">
     <script type="module" defer src="./js/jq.js"></script>
     <script type="module" defer src="./js/axios.js"></script>
+    <script type="module" defer src="./js/jqueryOverlay.js"></script>
     <script type="module" defer src="./js/partner.js"></script>
 </head>
 
@@ -26,22 +27,24 @@
                             <h1 class="content__subtitle">Партнёра</h1>
                             <div class="subtitle__decor"></div>
                         </div>
-                        <div class="content__input input">
-                            <h2 class="input__title">ИНН / Название</h2>
-                            <p class="input__value">Dataforum</p>
-                        </div>
-                        <div class="content__input input">
-                            <h2 class="input__title">Сайт</h2>
-                            <p class="input__value">https://dataforum.pro</p>
-                        </div>
-                        <div class="content__input input">
-                            <h2 class="input__title">Краткое описание</h2>
-                            <p class="input__value">Техническое обеспечение мероприятия световым, звуковым, видео- и конференц-оборудованием</p>
-                        </div>
-                        <div class="content__input input">
-                            <h2 class="input__title">Контакты:</h2>
-                            <p class="input__value">Телефон: 8 (812) 454-50-90</p>
-                            <p class="input__value">info@dataforum.pro</p>
+                        <div class="inputs">
+                            <div class="content__input input">
+                                <h2 class="input__title">ИНН / Название</h2>
+                                <p class="input__value --organization">Dataforum</p>
+                            </div>
+                            <div class="content__input input">
+                                <h2 class="input__title">Сайт</h2>
+                                <p class="input__value --site">https://dataforum.pro</p>
+                            </div>
+                            <div class="content__input input">
+                                <h2 class="input__title">Краткое описание</h2>
+                                <p class="input__value --description">Техническое обеспечение мероприятия световым, звуковым, видео- и конференц-оборудованием</p>
+                            </div>
+                            <div class="content__input input --contacts">
+                                <h2 class="input__title">Контакты:</h2>
+                                <p class="input__value --contact">Телефон: 8 (812) 454-50-90</p>
+                                <p class="input__value --contact">info@dataforum.pro</p>
+                            </div>
                         </div>
                     </div>
                     <div class="content__btns">

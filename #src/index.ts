@@ -47,13 +47,13 @@ app.listen(PORT, () => {
 });
 
 async function userType (token: string): Promise<string | null> {
-    console.log(token);
     
     return new Promise (async resolve => {
         try {
             const result = await axios.post('https://brics.wpdataforum.ru/api/authorize/type', {}, {
                 headers: { Authorization: `Bearer ${token}` }
             })
+
             resolve(result.data.type)
         } catch (e: any){
             console.log(e.response.data.errors);

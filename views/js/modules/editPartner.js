@@ -26,16 +26,19 @@ async function saveEdit() {
     let processedData = different(data)
     
     processedData = noEmpty(processedData)
-    const [result, err] = await updatePartnerData(processedData)
     
-    if (err !== null) {
-        console.log(err);
-        return
+    if (JSON.stringify(processedData) != '{}') {
+        const [result, err] = await updatePartnerData(processedData)
+    
+        if (err !== null) {
+            console.log(err);
+            return
+        }
+    
+        fillPartnerData(result.partner)
+    
+        setP_Data(result.partner)
     }
-
-    fillPartnerData(result.partner)
-
-    setP_Data(data)
 
     $('.edit__btn').removeClass('--blue').find('span').text('Редактровать профиль')
     $('.list__btn').removeClass('--grey')

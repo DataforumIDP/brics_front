@@ -22,9 +22,9 @@ async function saveEdit() {
     data.organization = $('.--e-organization').val()
     data.description = $('.--e-description').val()
     data.site = $('.--e-site').val()
-    data.contacts = ($('.--e-contacts').val()).split('\n').filter(item => item != '')
+    data.contacts = $('.--e-contacts').val()
     let processedData = different(data)
-    console.log(processedData);
+    
     processedData = noEmpty(processedData)
     const [result, err] = await updatePartnerData(processedData)
     

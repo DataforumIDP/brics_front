@@ -166,6 +166,7 @@ $index: calc(1vw + 1vh);
         font-style: normal;
         font-weight: 400;
         line-height: 30px; /* 200% */
+        word-wrap: break-word;
         .empty {
             display: block;
             height: 30px;
@@ -366,9 +367,8 @@ $index: calc(1vw + 1vh);
 }
 
 .material {
-    flex: 1 1 calc($index * 12);
-    max-width: calc($index * 12);
-    min-width: 35%;
+    flex: 1 1 40%;
+    max-width: 40%;
     aspect-ratio: 515/684;
     background-repeat: no-repeat;
     background-position: center;

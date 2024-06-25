@@ -22,20 +22,23 @@ async function saveEdit() {
     data.organization = $('.--e-organization').val()
     data.description = $('.--e-description').val()
     data.site = $('.--e-site').val()
-    data.contacts = ($('.--e-contacts').val()).split('\n').filter(item => item != '')
+    data.contacts = $('.--e-contacts').val()
     let processedData = different(data)
-    console.log(processedData);
-    processedData = noEmpty(processedData)
-    const [result, err] = await updatePartnerData(processedData)
     
-    if (err !== null) {
-        console.log(err);
-        return
+    processedData = noEmpty(processedData)
+    
+    if (JSON.stringify(processedData) != '{}') {
+        const [result, err] = await updatePartnerData(processedData)
+    
+        if (err !== null) {
+            console.log(err);
+            return
+        }
+    
+        fillPartnerData(result.partner)
+    
+        setP_Data(result.partner)
     }
-
-    fillPartnerData(result.partner)
-
-    setP_Data(data)
 
     $('.edit__btn').removeClass('--blue').find('span').text('Редактровать профиль')
     $('.list__btn').removeClass('--grey')

@@ -2,11 +2,11 @@
 export function scrollbarInit() {
     const d = calculateVerticalDistance($('.inputs')[0], $('.content__btns')[0])
     if (d == 0) {
-        $('.inputs').css({maxHeight: '350px', marginBottom: 10}).overlayScrollbars({
-            className: "os-theme-dark",
-        });    
-    } 
-} 
+        $('.inputs').css({ maxHeight: '350px', marginBottom: 10 }).overlayScrollbars({
+            className: "os-theme-dark"
+        });
+    }
+}
 
 export function calculateVerticalDistance(node1, node2) {
     const rect1 = node1.getBoundingClientRect();

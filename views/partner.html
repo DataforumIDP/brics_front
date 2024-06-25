@@ -27,9 +27,9 @@
                             <h1 class="content__subtitle">Партнёра</h1>
                             <div class="subtitle__decor"></div>
                         </div>
-                        <div class="inputs">
+                        <div class="inputs --views --nonre">
                             <div class="content__input input">
-                                <h2 class="input__title">ИНН / Название</h2>
+                                <h2 class="input__title">Название компании</h2>
                                 <p class="input__value --organization">Dataforum</p>
                             </div>
                             <div class="content__input input">
@@ -46,16 +46,34 @@
                                 <p class="input__value --contact">info@dataforum.pro</p>
                             </div>
                         </div>
+                        <div class="inputs --edit --none">
+                            <div class="edit-input">
+                                <h3 class="edit-input__title">Название компании</h3>
+                                <input type="text" class="edit-input__inp --e-organization">
+                            </div>
+                            <div class="edit-input">
+                                <h3 class="edit-input__title">Сайт</h3>
+                                <input type="text" class="edit-input__inp --e-site">
+                            </div>
+                            <div class="edit-input">
+                                <h3 class="edit-input__title">Краткое описание</h3>
+                                <textarea class="edit-input__inp --e-description"></textarea>
+                            </div>
+                            <div class="edit-input">
+                                <h3 class="edit-input__title">Контакты</h3>
+                                <textarea class="edit-input__inp --e-contacts"></textarea>
+                            </div>
+                        </div>
                     </div>
                     <div class="content__btns">
                         <button class="edit__btn btn --grad">
                             <div class="btn__grad"></div><span>Редактировать профиль</span>
                         </button>
-                        <button class="edit__btn btn">Загрузить список участников</button>
+                        <button class="list__btn btn">Загрузить список участников</button>
                     </div>
                 </div>
                 <div class="material"></div>
-                <button class="list-btn btn">Скачать справочник экспонента</button>
+                <a href="./files/test.xlsx" download class="list-btn btn">Скачать справочник экспонента</a>
             </div>
         </main>
         <div class="exit">

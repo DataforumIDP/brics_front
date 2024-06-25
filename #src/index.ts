@@ -54,6 +54,7 @@ async function userType (token: string): Promise<string | null> {
                 headers: { Authorization: `Bearer ${token}` }
             })
 
+
             resolve(result.data.type)
         } catch (e: any){
             console.log(e.response.data.errors);

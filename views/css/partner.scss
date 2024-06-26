@@ -177,8 +177,8 @@ $index: calc(1vw + 1vh);
 
 .inputs {
     overflow: auto;
-    padding-top: 20px;
-    padding-right: 10px;
+    padding-top: 10px;
+    padding-right: 14px;
 }
 
 .exit {
@@ -305,6 +305,9 @@ $index: calc(1vw + 1vh);
     }
     &.--grey {
         color: #8d8d8d;
+        &:hover {
+            background: #e9e7ef;
+        }
     }
 }
 
@@ -328,7 +331,9 @@ $index: calc(1vw + 1vh);
 .edit-input {
     position: relative;
     width: 100%;
-    margin-bottom: calc($index * 0.6);
+    &:not(:last-child) {
+        margin-bottom: calc($index * 0.6)
+    }
     // .edit-input__title
 
     &__title {
@@ -364,9 +369,11 @@ $index: calc(1vw + 1vh);
     textarea {
         height: 90px;
         resize: none;
+        border-right: none;
+        overflow-y: scroll;
         &::-webkit-scrollbar {
             width: 5px; /* Ширина скроллбара */
-            background-color: white; /* Цвет фона скроллбара */
+            background-color: #eeecf4; /* Цвет фона скроллбара */
         }
 
         &::-webkit-scrollbar-thumb {
@@ -375,7 +382,11 @@ $index: calc(1vw + 1vh);
         }
 
         &::-webkit-scrollbar-track {
-            background-color: white; /* Цвет дорожки скроллбара */
+            background-color: #eeecf4; /* Цвет дорожки скроллбара */
+            border-right: 1px solid var(--cloudcityconf-com-mariner, #2c49da);
+            border-top: 1px solid var(--cloudcityconf-com-mariner, #2c49da);
+            border-bottom: 1px solid var(--cloudcityconf-com-mariner, #2c49da);
+            border-radius: 0 10px 10px 0;
         }
     }
 }
@@ -389,6 +400,11 @@ $index: calc(1vw + 1vh);
     background-size: cover;
     border-radius: 33px;
     background-image: url(../img/partner/def_img.svg);
+}
+
+.back-to-profile {
+    left: 0;
+    right: unset;
 }
 
 .--none {

@@ -142,6 +142,7 @@ $index: calc(1vw + 1vh);
         background-position: center;
         background-size: contain;
         background-repeat: no-repeat;
+        margin-top: 10px;   
     }
 }
 .input {
@@ -327,7 +328,7 @@ $index: calc(1vw + 1vh);
 .edit-input {
     position: relative;
     width: 100%;
-    margin-bottom: calc($index * 0.4);
+    margin-bottom: calc($index * 0.6);
     // .edit-input__title
 
     &__title {

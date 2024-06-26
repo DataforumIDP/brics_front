@@ -20,13 +20,13 @@ async function saveEdit() {
     let data = {}
 
     data.organization = $('.--e-organization').val()
-    data.description = $('.--e-description').val()
+    data.description = $('.--e-description').val().trim()
     data.site = $('.--e-site').val()
-    data.contacts = $('.--e-contacts').val()
+    data.contacts = $('.--e-contacts').val().trim()
     let processedData = different(data)
     
     processedData = noEmpty(processedData)
-    
+
     if (JSON.stringify(processedData) != '{}') {
         const [result, err] = await updatePartnerData(processedData)
     

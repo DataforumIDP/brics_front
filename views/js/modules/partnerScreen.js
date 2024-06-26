@@ -4,6 +4,7 @@
 export function openPartnerScreen() {
     $('.--users').removeClass('--none')
     $('.--profile').addClass('--none')
+    $('.--profile').css({height: $('.--users')})
 }
 
 export function closePartnerScreen() {

@@ -179,6 +179,8 @@ $index: calc(1vw + 1vh);
     overflow: auto;
     padding-top: 10px;
     padding-right: 14px;
+    max-height: 480px;
+    height: 100vh;
 }
 
 .exit {

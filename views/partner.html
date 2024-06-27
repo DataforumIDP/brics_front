@@ -19,7 +19,7 @@
     <div class="wrapper">
         <main class="main">
             <div class="main__decor"></div>
-            
+
             <div class="main__conteiner --profile">
                 <div class="content">
                     <div class="content__text">
@@ -49,19 +49,19 @@
                         <div class="inputs --edit --none">
                             <div class="edit-input">
                                 <h3 class="edit-input__title">Название компании</h3>
-                                <input type="text" maxlength="200" class="edit-input__inp --e-organization">
+                                <input type="text" maxlengdiv="200" class="edit-input__inp --e-organization">
                             </div>
                             <div class="edit-input">
                                 <h3 class="edit-input__title">Сайт</h3>
-                                <input type="text" maxlength="200" class="edit-input__inp --e-site">
+                                <input type="text" maxlengdiv="200" class="edit-input__inp --e-site">
                             </div>
                             <div class="edit-input">
                                 <h3 class="edit-input__title">Краткое описание</h3>
-                                <textarea maxlength="200" class="edit-input__inp --e-description"></textarea>
+                                <textarea maxlengdiv="200" class="edit-input__inp --e-description"></textarea>
                             </div>
                             <div class="edit-input">
                                 <h3 class="edit-input__title">Контакты</h3>
-                                <textarea maxlength="200" class="edit-input__inp --e-contacts"></textarea>
+                                <textarea maxlengdiv="200" class="edit-input__inp --e-contacts"></textarea>
                             </div>
                         </div>
                     </div>
@@ -76,41 +76,55 @@
                 <a href="./files/test.xlsx" download class="list-btn btn">Скачать справочник экспонента</a>
             </div>
             <div class="main__conteiner --users --none">
-                <div class="content">
-                    <div class="content__text">
-                        <h1 class="content__title">Пользователи</h1>
-                        <div class="line">
-                            <h1 class="content__subtitle">Партнёра</h1>
-                            <div class="subtitle__decor"></div>
-                        </div>
-                        <div class="inputs">
-                            <div class="content__input input">
-                                <h2 class="input__title">Название компании</h2>
-                                <p class="input__value">Dataforum</p>
-                            </div>
-                            <div class="content__input input">
-                                <h2 class="input__title">Сайт</h2>
-                                <p class="input__value">https://dataforum.pro</p>
-                            </div>
-                            <div class="content__input input">
-                                <h2 class="input__title">Краткое описание</h2>
-                                <p class="input__value">Техническое обеспечение мероприятия световым, звуковым, видео- и конференц-оборудованием</p>
-                            </div>
-                            <div class="content__input input ">
-                                <h2 class="input__title">Контакты:</h2>
-                                <p class="input__value">Телефон: 8 (812) 454-50-90</p>
-                            </div>
-                        </div>
+                <div class="conteiner__header header">
+                    <div class="header__search search">
+                        <input type="text" class="search__inp">
+                        <div class="search__ico"></div>
+                        <div class="search__clear --none"></div>
                     </div>
-                    <div class="content__btns">
-                        <button class="edit__btn btn --grad">
-                            <div class="btn__grad"></div><span>Редактировать профиль</span>
-                        </button>
-                        <button class="list__btn btn">Загрузить список участников</button>
+                    <div class="header__btns">
+                        <button class="header-btn add-btn btn">Добавить <div class="ico"></div><input type="file" id="file"></button>
+                        <a href="./files/test.xlsx" download class="header-btn load-btn btn">
+                            <div class="ico"></div> Скачать шаблон
+                        </a>
+                        <div class="header-btn delete-btn"></div>
                     </div>
                 </div>
-                <div class="material"></div>
-                <button  class="list-btn btn back-to-profile">< Профиль</button>
+                <div class="conteiner__body body">
+                    <div class="table">
+                        <div class="table__header">
+                            <div class="table__item --0"></div>
+                            <div class="table__item --5 --name">Имя <div class="order-decor"></div>
+                            </div>
+                            <div class="table__item --3">ПАСпорт</div>
+                            <div class="table__item --5">ДОЛЖНОСТЬ</div>
+                            <div class="table__item --4">ВИД ДЕЯТЕЛЬНОСТИ</div>
+                            <div class="table__item --2">Действие</div>
+                        </div>
+                        <div class="table__body">
+                            <!-- <div d-id="1" class="table__row">
+                                <div class="table__item --0">
+                                    <div class="checkbox"></div>
+                                </div>
+                                <div class="table__item --5">Ставропольский Константин Константиновичь</div>
+                                <div class="table__item --3">4029 588860</div>
+                                <div class="table__item --5">Распиватель пива и расхититель гробниц 20го века черного цвета со звуком свехскоросьтного соника черного цвета со звуком свехскоросьтного соника черного цвета со звуком свехскоросьтного соника</div>
+                                <div class="table__item --4"></div>
+                                <div class="table__item --2">
+                                    <div class="action">
+                                        <div class="action__ico"></div>
+                                        <div class="action__body">
+                                            <div class="action__item --edit-u">Редактировать</div>
+                                            <div class="action__item --delete-u">Удалить</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+                            
+                        </div>
+                    </div>
+                </div>
+                <button class="list-btn btn back-to-profile"><div class="back-ico"></div> Профиль</button>
             </div>
         </main>
         <div class="exit">

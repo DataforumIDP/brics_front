@@ -6,6 +6,7 @@ export function scrollbarInit() {
             className: "os-theme-dark"
         });
     }
+    $('.table__body').overlayScrollbars({ className: "os-theme-dark" });
 }
 
 export function calculateVerticalDistance(node1, node2) {

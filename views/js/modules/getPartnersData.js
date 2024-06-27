@@ -1,12 +1,11 @@
+import { getAuthorizeSettings } from "./authorizeSetting.js";
 import { getToken } from "./token.js"
 
 
 export async function getPartnerData () {
     return new Promise (async resolve => {
         try {
-            const result = await axios.get('https://brics.wpdataforum.ru/api/partner', {
-                headers: { Authorization: `Bearer ${getToken()}` }
-            })
+            const result = await axios.get('https://brics.wpdataforum.ru/api/partner', getAuthorizeSettings())
 
             resolve([result.data, null])
 
@@ -39,5 +38,3 @@ export function getP_Data() {
 export function setP_Data(newData) {
     partnerData=newData
 }
-
-''.replace()

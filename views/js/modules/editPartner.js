@@ -1,6 +1,7 @@
+import { getAuthorizeSettings } from "./authorizeSetting.js"
 import { fillPartnerData, getP_Data, setP_Data } from "./getPartnersData.js"
 import { noEmpty } from "./noEmpty.js"
-import { getToken } from "./token.js"
+import { getUser } from "./partnerScreen.js"
 
 let editMode = false
 
@@ -50,13 +51,14 @@ async function saveEdit() {
 async function updatePartnerData(data) {
     return new Promise(async resolve => {
         try {
-            const result = await axios.patch('https://brics.wpdataforum.ru/api/partner', data, { headers: { Authorization: `Bearer ${getToken()}` } })
+            const result = await axios.patch('https://brics.wpdataforum.ru/api/partner', data, getAuthorizeSettings())
             resolve([result.data, null])
         } catch ({ response }) {
             resolve([null, response])
         }
     })
 }
+
 function different(obj) {
     const now = getP_Data()
 
@@ -65,4 +67,9 @@ function different(obj) {
         if (obj[item] != now[item]) etalon[item] = obj[item]
     })
     return etalon
+}
+
+export function openEditUser (id) {
+    const user = getUser(id)
+    console.log(user);
 }

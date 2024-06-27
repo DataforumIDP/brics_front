@@ -67,9 +67,7 @@ export class User {
             ...data,
             ...{ timestamp },
         });
-
-        console.log(error);
-
+        
         if (error) return dbError(res, "#7004");
 
         res.json(result);

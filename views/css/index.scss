@@ -63,6 +63,8 @@ $index: calc(1vw + 1vh);
             left: 0;
             z-index: 5;
             background-color: #283fd1;
+            overflow: hidden;
+            border-radius: 0 0 60px 0;
             video {
                 position: absolute;
                 top: 50%;

@@ -560,11 +560,14 @@ $index: calc(1vw + 1vh);
     gap: 10px;
 }
 
+.modal__btn {
+    margin-top: 50px;
+}
+
 .back-to-profile {
     left: 0;
     right: unset;
-    padding: 14px 70px;
-    padding-left: 30px;
+    padding: 14px 30px;
     display: flex;
     align-items: center;
     gap: 5px;

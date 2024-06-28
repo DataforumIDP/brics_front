@@ -4,6 +4,7 @@ import { checkboxControl } from "./modules/checkbox.js";
 import { toggleEditMode } from "./modules/editPartner.js";
 import { exit } from "./modules/exit.js";
 import { fillPartnerData, getPartnerData } from "./modules/getPartnersData.js";
+import { modal, openModal } from "./modules/modal.js";
 import { closePartnerScreen, openPartnerScreen, partnerScreenInit, toggleSelect } from "./modules/partnerScreen.js";
 import { scrollbarInit } from "./modules/scrollBarInit.js";
 import { searchInputInit } from "./modules/searchInput.js";
@@ -12,6 +13,8 @@ searchInputInit()
 actionInit()
 scrollbarInit()
 partnerScreenInit()
+modal('.modal')
+
 
 $('.exit__content').click(exit)
 

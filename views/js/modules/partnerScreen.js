@@ -1,15 +1,13 @@
 import { getAuthorizeSettings } from "./authorizeSetting.js"
+import { updateUserData } from "./editPartner.js"
 import { getToken } from "./token.js"
 
 export function partnerScreenInit() {
     $('.delete-btn').click(deleteList)
     $('#file').change(regNewUsers)
-    $('.--name').click(()=>{
-        alert()
-        getParams.order = !getParams.order
-        getAndFillUsers()
-    })
+    $('.--name').click(changeOrder)
     getAndFillUsers()
+    $('.save-btn').click(updateUserData)
 }
 
 export function openPartnerScreen() {
@@ -26,11 +24,17 @@ export function closePartnerScreen() {
 let getParams = {
     search: '',
     order: true,
-    sort: 'name'
+    sort: 'surname'
 }
 
 export function updateParams(key, val) {
     getParams[key] = val
+    getAndFillUsers()
+}
+
+function changeOrder() {
+    getParams.order = !getParams.order
+    $('.order').removeClass(getParams.order ? '--asc' : '--desc').addClass(!getParams.order ? '--asc' : '--desc') 
     getAndFillUsers()
 }
 

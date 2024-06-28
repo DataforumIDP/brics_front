@@ -569,13 +569,13 @@ $index: calc(1vw + 1vh);
     align-items: center;
     gap: 5px;
     .back-ico {
-        width: 15px;
+        width: 11px;
         aspect-ratio: 1;
         background-image: url(../img/partner/arr.svg);
         background-position: center;
         background-repeat: no-repeat;
         background-size: contain;
-        rotate: 180deg;
+        rotate: -90deg;
     }
 }
 

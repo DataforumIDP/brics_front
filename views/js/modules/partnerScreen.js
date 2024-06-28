@@ -1,5 +1,6 @@
 import { getAuthorizeSettings } from "./authorizeSetting.js"
 import { updateUserData } from "./editPartner.js"
+import { openModal } from "./modal.js"
 import { getToken } from "./token.js"
 
 export function partnerScreenInit() {
@@ -122,9 +123,16 @@ async function deleteList() {
 async function regNewUsers() {
     const userListFile = $(this)[0].files[0]
     const [result, err] = await uploadUserFile(userListFile)
-    if (err !== null) return
+    if (err !== null) return displayError(err)
 
     getAndFillUsers()
+}
+
+function displayError (err) {
+    openModal('.error-modal')
+    console.log(err);
+    $('.modal__error').text(`Строка ${err.errors.table.row} / ${err.errors.table.text}`)
+    console.log(`Строка ${err.errors.table.row} / ${err.errors.table.text}`);
 }
 
 async function uploadUserFile(file) {
@@ -142,12 +150,11 @@ async function uploadUserFile(file) {
                     Authorization: `Bearer ${getToken()}`
                 }
             }
-            console.log(getAuthorizeSettings());
             const result = await axios(params)
             resolve([result.data, null])
 
         } catch ({ response }) {
-            resolve([null, response])
+            resolve([null, response.data])
         }
     })
 }

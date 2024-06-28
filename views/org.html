@@ -1,16 +1,133 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Личный кабинет</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/partner.css">
+    <link rel="stylesheet" href="./css/org.css">
     <script type="module" defer src="./js/jq.js"></script>
     <script type="module" defer src="./js/axios.js"></script>
-    <!-- <script type="module" defer src="./js/logIn.js"></script> -->
+    <script type="module" defer src="./js/jqueryOverlay.js"></script>
+    <script type="module" defer src="./js/org.js"></script>
 </head>
+
 <body>
     <div class="wrapper">
-        Организатор
+        <main class="main">
+            <div class="main__decor"></div>
+
+            <div class="main__conteiner">
+                <div class="conteiner__header header">
+                    <div class="header__search search">
+                        <input type="text" class="search__inp">
+                        <div class="search__ico"></div>
+                        <div class="search__clear --none"></div>
+                    </div>
+                    <div class="header__btns">
+                        <button class="header-btn add-btn btn">Добавить <div class="ico"></div><input type="file" id="file"></button>
+                        <div class="custom-select">
+                            <div class="custom-select__holder">Фильтрация <div class="custom-select__ico"></div>
+                            </div>
+                        </div>
+                        <a href="./files/test.xlsx" download class="header-btn load-btn btn">
+                            <div class="ico"></div> Скачать партнеров
+                        </a>
+                        <a href="./files/test.xlsx" download class="header-btn load-btn btn">
+                            <div class="ico"></div> Скачать шаблон
+                        </a>
+                        <div class="header-btn delete-btn"></div>
+                    </div>
+                </div>
+                <div class="conteiner__body body">
+                    <div class="table">
+                        <div class="table__header">
+                            <div class="table__item --0"></div>
+                            <div class="table__item --5 --name">ФИО <div class="order"></div>
+                            </div>
+                            <div class="table__item --3">ПАСпорт</div>
+                            <div class="table__item --5">ДОЛЖНОСТЬ</div>
+                            <div class="table__item --4">ВИД ДЕЯТЕЛЬНОСТИ</div>
+                            <div class="table__item --2">Действие</div>
+                        </div>
+                        <div class="table__body">
+                            <!-- <div d-id="1" class="table__row">
+                                <div class="table__item --0">
+                                    <div class="checkbox"></div>
+                                </div>
+                                <div class="table__item --5">Ставропольский Константин Константиновичь</div>
+                                <div class="table__item --3">4029 588860</div>
+                                <div class="table__item --5">Распиватель пива и расхититель гробниц 20го века черного цвета со звуком свехскоросьтного соника черного цвета со звуком свехскоросьтного соника черного цвета со звуком свехскоросьтного соника</div>
+                                <div class="table__item --4"></div>
+                                <div class="table__item --2">
+                                    <div class="action">
+                                        <div class="action__ico"></div>
+                                        <div class="action__body">
+                                            <div class="action__item --edit-u">Редактировать</div>
+                                            <div class="action__item --delete-u">Удалить</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+
+                        </div>
+                    </div>
+                </div>
+                <button class="list-btn btn back-to-profile">
+                    <div class="back-ico"></div> Профиль
+                </button>
+            </div>
+        </main>
+        <div class="exit">
+            <div class="exit__content">
+                <div class="exit__ico"></div>
+            </div>
+        </div>
+        <div class="modal edit-modal">
+            <div class="modal__back"></div>
+            <div class="modal__content">
+                <div class="modal__header">
+                    <div class="modal__grey-text --date">Дата добавления: <span>17/06/2024</span></div>
+                    <div class="modal__grey-text --id">ID <span>22</span></div>
+                </div>
+                <div class="edit-input">
+                    <h3 class="edit-input__title">ФИО</h3>
+                    <input type="text" maxlengdiv="200" class="edit-input__inp --e-fio">
+                </div>
+                <div class="edit-input">
+                    <h3 class="edit-input__title">Паспорт</h3>
+                    <input type="text" maxlengdiv="200" class="edit-input__inp --e-passport">
+                </div>
+                <div class="edit-input">
+                    <h3 class="edit-input__title">Должность</h3>
+                    <input type="text" maxlengdiv="200" class="edit-input__inp --e-grade">
+                </div>
+                <div class="edit-input">
+                    <h3 class="edit-input__title">Вид деятельности</h3>
+                    <input type="text" maxlengdiv="200" class="edit-input__inp --e-activity">
+                </div>
+
+                <div class="btns">
+                    <button class="save-btn btn --blue">Сохранить</button>
+                    <button class="cancel-btn btn">Отмена</button>
+                </div>
+            </div>
+        </div>
+        <div class="modal error-modal">
+            <div class="modal__back"></div>
+            <div class="modal__content">
+                <h2 class="modal__title">Ошибка добавления</h2>
+                <h3 class="modal__error">Аккаунт существует</h3>
+                <button class="modal__btn btn"><span>Закрыть</span>
+                    <div class="btn__grad"></div>
+                </button>
+            </div>
+        </div>
     </div>
 </body>
+
 </html>

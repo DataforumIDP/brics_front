@@ -95,7 +95,7 @@ export function openEditUser (id) {
     $('.--e-passport').val(user.passport)
     $('.--e-grade').val(user.grade)
     $('.--e-activity').val(user.activity)
-    openModal('.modal')
+    openModal('.edit-modal')
 }
 
 export async function updateUserData() {
@@ -110,7 +110,7 @@ export async function updateUserData() {
 
     const processedData = different(data, editedUser)
     const [result, err] = await updateUserSend(processedData, editedUser.id)
-    closeModal('.modal')
+    closeModal('.edit-modal')
     getAndFillUsers()
 }
 

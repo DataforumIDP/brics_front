@@ -13,7 +13,8 @@ searchInputInit()
 actionInit()
 scrollbarInit()
 partnerScreenInit()
-modal('.modal')
+modal('.edit-modal')
+modal('.error-modal')
 
 
 $('.exit__content').click(exit)

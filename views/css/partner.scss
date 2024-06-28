@@ -1,5 +1,6 @@
 @import url(./zero.css);
 @import url(./scrollbar.css);
+@import url(./modal.css);
 
 $index: calc(1vw + 1vh);
 
@@ -554,12 +555,16 @@ $index: calc(1vw + 1vh);
 
 .--name {
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .back-to-profile {
     left: 0;
     right: unset;
-    padding: 14px 50px;
+    padding: 14px 70px;
+    padding-left: 30px;
     display: flex;
     align-items: center;
     gap: 5px;
@@ -637,7 +642,17 @@ $index: calc(1vw + 1vh);
 .--5 {
     flex: 2 1 20%;
 }
-.order-decor {
+.order {
+    width: 10px;
+    aspect-ratio: 1;
+    background-image: url(../img/partner/order.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    rotate: -45deg;
+    &.--asc {
+        rotate: 135deg;
+    }
 }
 .--3 {
     flex: 1 1 10%;
@@ -720,11 +735,42 @@ $index: calc(1vw + 1vh);
         font-style: normal;
         font-weight: 400;
         line-height: 40px; /* 285.714% */
-        transition: all .5s ease;
+        transition: all 0.5s ease;
         text-align-last: left;
         cursor: pointer;
         &:hover {
-            color: #3769FA;
+            color: #3769fa;
+        }
+    }
+}
+
+.modal {
+    &__content {
+        max-width: 700px;
+    }
+    &__grey-text {
+        color: rgba(49, 69, 106, 0.4);
+        font-family: "Open Sans";
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 40px; /* 200% */
+    }
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 50px;
+        border-bottom: 1px solid rgba(167, 181, 201, 0.99);
+    }
+    .btns {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 50px;
+        margin-top: 50px;
+        * {
+            flex: 1 1 50%;
         }
     }
 }

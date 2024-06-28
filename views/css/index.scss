@@ -1,5 +1,6 @@
 @import url(./zero.css);
 @import url(./scrollbar.css);
+@import url(./modal.css);
 
 $index: calc(1vw + 1vh);
 
@@ -1052,35 +1053,6 @@ $index: calc(1vw + 1vh);
         margin-bottom: 50px;
     }
 
-    .modal {
-        padding: 0 calc($index * 4);
-
-        &__title {
-            font-size: calc($index * 1.8);
-            margin-bottom: 20px;
-        }
-
-        &__error {
-            font-size: calc($index * 1.1);
-        }
-
-        &__btn {
-            width: 100%;
-            padding: calc($index * 0.8) 10px;
-            margin-top: 20px;
-            margin-bottom: 0;
-        }
-
-        // .modal__content
-
-        &__content {
-            position: relative;
-            z-index: 24;
-            max-width: 540px;
-            min-height: 200px;
-            padding: 30px 30px;
-        }
-    }
 }
 
 //         .form {

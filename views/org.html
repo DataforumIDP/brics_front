@@ -31,7 +31,30 @@
                     <div class="header__btns">
                         <button class="header-btn add-btn btn">Добавить <div class="ico"></div><input type="file" id="file"></button>
                         <div class="custom-select">
-                            <div class="custom-select__holder">Фильтрация <div class="custom-select__ico"></div>
+                            <div class="custom-select__holder">
+                                Фильтрация <div class="order"></div>
+                            </div>
+                            <div class="custom-select__body">
+                                <div d-type="attendees" class="custom-select__item">
+                                    <span>Участник</span>
+                                    <div class="checkbox type-check"></div>
+                                </div>
+                                <div d-type="partner" class="custom-select__item">
+                                    <span>Партнёр</span>
+                                    <div class="checkbox type-check"></div>
+                                </div>
+                                <div d-type="speacker" class="custom-select__item">
+                                    <span>Спикер</span>
+                                    <div class="checkbox type-check"></div>
+                                </div>
+                                <div d-type="smi" class="custom-select__item">
+                                    <span>СМИ</span>
+                                    <div class="checkbox type-check"></div>
+                                </div>
+                                <div d-type="org" class="custom-select__item">
+                                    <span>Организатор</span>
+                                    <div class="checkbox type-check"></div>
+                                </div>
                             </div>
                         </div>
                         <a href="./files/test.xlsx" download class="header-btn load-btn btn">
@@ -47,21 +70,27 @@
                     <div class="table">
                         <div class="table__header">
                             <div class="table__item --0"></div>
+                            <div class="table__item --3">Тип </div>
                             <div class="table__item --5 --name">ФИО <div class="order"></div>
                             </div>
-                            <div class="table__item --3">ПАСпорт</div>
                             <div class="table__item --5">ДОЛЖНОСТЬ</div>
-                            <div class="table__item --4">ВИД ДЕЯТЕЛЬНОСТИ</div>
+                            <div class="table__item --4">Организация</div>
                             <div class="table__item --2">Действие</div>
                         </div>
                         <div class="table__body">
-                            <!-- <div d-id="1" class="table__row">
+                            <div d-id="1" class="table__row">
                                 <div class="table__item --0">
                                     <div class="checkbox"></div>
                                 </div>
+                                <div class="table__item --3 --type">
+                                    <div class="type__container">
+                                        <span>Сми</span>
+                                        <div class="accr --true">Аккредитован</div>
+                                    </div>
+                                    <div title="Эта запись добавлена организатором" class="created"></div>
+                                </div>
                                 <div class="table__item --5">Ставропольский Константин Константиновичь</div>
-                                <div class="table__item --3">4029 588860</div>
-                                <div class="table__item --5">Распиватель пива и расхититель гробниц 20го века черного цвета со звуком свехскоросьтного соника черного цвета со звуком свехскоросьтного соника черного цвета со звуком свехскоросьтного соника</div>
+                                <div class="table__item --5">4029 588860</div>
                                 <div class="table__item --4"></div>
                                 <div class="table__item --2">
                                     <div class="action">
@@ -72,14 +101,11 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div> -->
+                            </div>
 
                         </div>
                     </div>
                 </div>
-                <button class="list-btn btn back-to-profile">
-                    <div class="back-ico"></div> Профиль
-                </button>
             </div>
         </main>
         <div class="exit">
@@ -122,9 +148,7 @@
             <div class="modal__content">
                 <h2 class="modal__title">Ошибка добавления</h2>
                 <h3 class="modal__error">Аккаунт существует</h3>
-                <button class="modal__btn btn"><span>Закрыть</span>
-                    <div class="btn__grad"></div>
-                </button>
+                <button class="modal__btn btn"><span>Закрыть</span></button>
             </div>
         </div>
     </div>

@@ -646,15 +646,15 @@ $index: calc(1vw + 1vh);
     flex: 2 1 20%;
 }
 .order {
-    width: 10px;
+    width: 15px;
     aspect-ratio: 1;
     background-image: url(../img/partner/order.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    rotate: -45deg;
+    rotate: 0deg;
     &.--asc {
-        rotate: 135deg;
+        rotate: 180deg;
     }
 }
 .--3 {

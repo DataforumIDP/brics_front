@@ -7,9 +7,9 @@ import { fillPartnerData, getPartnerData } from "./modules/getPartnersData.js";
 import { modal, openModal } from "./modules/modal.js";
 import { closePartnerScreen, openPartnerScreen, partnerScreenInit, toggleSelect } from "./modules/partnerScreen.js";
 import { scrollbarInit } from "./modules/scrollBarInit.js";
-import { searchInputInit } from "./modules/searchInput.js";
+import { searchInputInit, serchFunctionForPartner } from "./modules/searchInput.js";
 
-searchInputInit()
+searchInputInit(serchFunctionForPartner)
 actionInit()
 scrollbarInit()
 partnerScreenInit()

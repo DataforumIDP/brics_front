@@ -1,0 +1,125 @@
+.search {
+    flex: 1 1 20%;
+}
+
+.main {
+    &__conteiner {
+        flex-direction: column;
+        height: 700px;
+        gap: 30px;
+    }
+}
+
+.delete-btn {
+    min-width: 45px;
+}
+
+.custom-select {
+    // .custom-select__holder
+    position: relative;
+    &.--open {
+        .custom-select__body {
+            display: block;
+        }
+        .custom-select__holder {
+            border: 1px solid #2c49da;
+            background: #f1f0f6;
+            color: #3769fa;
+        }
+        .order {
+            background-image: url(../img/partner/order-h.png);
+            rotate: 0deg;
+            width: 15px;
+        }
+    }
+
+    &__holder {
+        border-radius: 8px;
+        border: 1px solid rgba(44, 73, 218, 0.44);
+        background: #f1f0f6;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #675876;
+
+        font-family: "Open Sans";
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        padding: 10px 15px;
+        gap: 10px;
+        cursor: pointer;
+    }
+    // .custom-select__body
+
+    &__body {
+        position: absolute;
+        z-index: 20;
+        display: none;
+        width: 100%;
+        top: calc(100% + 20px);
+        left: 0;
+        border-radius: 8px;
+        background: #f1f0f6;
+        box-shadow: 0px 7px 14px 1px rgba(0, 0, 0, 0.12);
+        padding: 10px 15px;
+    }
+
+    // .custom-select__item
+
+    &__item {
+        color: #675876;
+        font-family: "Open Sans";
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 40px; /* 285.714% */
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+        &:hover {
+            color: #3769fa;
+        }
+    }
+
+    .checkbox {
+        width: 14px;
+        background-size: 80%;
+    }
+}
+
+.--type {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    line-height: unset;
+}
+
+.type__container {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.accr {
+    color: rgba(48, 50, 90, 0.82);
+    font-family: "Open Sans";
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 7px; /* 63.636% */
+    &.--true {
+        color: #3769FA;
+    }
+}
+
+.created {
+    width: 10px;
+    aspect-ratio: 1;
+    border-radius: 10px;
+    background-color: #6B8BE7;
+    margin-right: 10px;
+    cursor: pointer;
+}

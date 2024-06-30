@@ -10,3 +10,4 @@ export function filtrationInit () {
         $('.custom-select').addClass('--open')
     })
 }
+

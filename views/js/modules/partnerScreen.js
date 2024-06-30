@@ -2,6 +2,7 @@ import { getAuthorizeSettings } from "./authorizeSetting.js"
 import { updateUserData } from "./editPartner.js"
 import { openModal } from "./modal.js"
 import { getToken } from "./token.js"
+import { openEditUser } from "./editPartner.js"
 
 export function partnerScreenInit() {
     $('.delete-btn').click(deleteList)
@@ -99,11 +100,10 @@ export function toggleSelect(val) {
     else selectedRows.push(val)
 }
 
-
 export async function deleteUser(id) {
     return new Promise(async resolve => {
         try {
-            console.log(getAuthorizeSettings());
+            
             const result = await axios.delete(`https://brics.wpdataforum.ru/api/partner/${id}`, getAuthorizeSettings())
             resolve([result.data, null])
 
@@ -157,4 +157,17 @@ async function uploadUserFile(file) {
             resolve([null, response.data])
         }
     })
+}
+
+export async function deleteInAction () {
+    const userId = $(this).parent().parent().parent().parent().attr('d-id')
+    $('.action.--active').removeClass('--active')
+    await deleteUser(userId)
+    getAndFillUsers()
+}
+
+export function editInAction () {
+    const userId = $(this).parent().parent().parent().parent().attr('d-id')
+    $('.action.--active').removeClass('--active')
+    openEditUser(userId)
 }

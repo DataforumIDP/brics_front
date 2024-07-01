@@ -1,4 +1,5 @@
 import { getAuthorizeSettings } from "./authorizeSetting.js"
+import { getToken } from "./token.js"
 
 
 export function orgscreenInit() {
@@ -40,7 +41,7 @@ async function uploadUserFile(file) {
             const result = await axios(params)
             resolve([result.data, null])
 
-        } catch ({ response }) {
+        } catch ({response}) {
             resolve([null, response.data])
         }
     })

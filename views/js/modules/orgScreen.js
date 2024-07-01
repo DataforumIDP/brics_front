@@ -131,8 +131,8 @@ function pasteUserInTable(user) {
                 <div class="action">
                     <div class="action__ico"></div>
                     <div class="action__body">
+                    <div class="action__item --edit-u">Редактировать</div>
                         ${(['smi', 'speacker'].includes(user.type) && !user.accreditation) ? '<div class="action__item --accr-u">Аккредитовать</div>' : ''}
-                        <div class="action__item --edit-u">Редактировать</div>
                         <div class="action__item --delete-u">Удалить</div>
                     </div>
                 </div>

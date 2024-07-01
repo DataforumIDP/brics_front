@@ -89,6 +89,8 @@ export function openEditUser (id) {
 
     const date = new Date(timestamp)
 
+console.log(user);
+
     $('.--id span').text(user.id)
     $('.--date span').text(`${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`)
     $('.--e-fio').val(`${user.surname} ${user.name} ${(user.lastname !== null) ? user.lastname : ''}`)

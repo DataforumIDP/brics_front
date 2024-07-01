@@ -29,6 +29,17 @@ app.get("/lk", async (req: Request, res: Response) => {
     res.sendFile(htmlPath)
 });
 
+app.get("/дл", async (req: Request, res: Response) => {
+    const type = await userType(req.cookies.token)
+    console.log(type);
+    
+    let htmlPath = ''
+    if (!type) htmlPath = path.join(__dirname, '../views/login.html')
+    if (type === 'partner') htmlPath = path.join(__dirname, '../views/partner.html')
+    if (type === 'org') htmlPath = path.join(__dirname, '../views/org.html')
+    res.sendFile(htmlPath)
+});
+
 app.get('*.*', (req, res) => {
     const filePath = path.join(__dirname, 'views', req.path);
     res.sendFile(filePath, (err) => {

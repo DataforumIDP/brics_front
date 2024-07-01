@@ -20,15 +20,15 @@ let partnerData = {}
 
 export function fillPartnerData(struct) {
     partnerData = struct
-    $('.--organization').html(struct.organization??'<span>Незаполнено</span>')
-    $('.--site').html(struct.site??'<span>Незаполнено</span>')
-    $('.--description').html(struct.description.trim().replace(/\n/g, '<br>')??'<span>Незаполнено</span>')
-    $('.--contacts').html(struct.contacts.trim().replace(/\n/g, '<br>')??'<span>Незаполнено</span>')
+    $('.--organization').html(struct.organization??'<span class="empty"></span>')
+    $('.--site').html(struct.site??'<span class="empty"></span>')
+    $('.--description').html(struct.description?.trim().replace(/\n/g, '<br>')??'<span class="empty"></span>')
+    $('.--contacts').html(struct.contacts?.trim().replace(/\n/g, '<br>')??'<span class="empty"></span>')
     
     $('.--e-organization').val(struct.organization)
     $('.--e-site').val(struct.site)
-    $('.--e-description').val(struct.description.trim())
-    $('.--e-contacts').val(struct.contacts.trim())
+    $('.--e-description').val(struct.description?.trim())
+    $('.--e-contacts').val(struct.contacts?.trim())
 }
 
 export function getP_Data() {

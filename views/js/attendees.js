@@ -54,9 +54,14 @@ $(document).on('click', '.type-list .list__item', function(){
     $('.type-list').addClass('--none')
 })
 
+let isSending = false
+
 $('.form__btn').click(async function () {
+    if (isSending) return false
     $(this).addClass('--sending')
+    isSending = true
     await userReg()
+    isSending = false
     $(this).removeClass('--sending')
 })
 

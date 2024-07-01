@@ -46,6 +46,7 @@ export async function getAndFillUsers() {
     const [res, err] = await getUserList()
     userList = res.users
     fillUserList(userList)
+    selectedRows = []
 }
 
 export function getUser(id = null) {

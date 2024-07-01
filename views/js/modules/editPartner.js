@@ -87,9 +87,7 @@ export function openEditUser (id) {
 
     const timestamp = user.timestamp ?? new Date().getTime()
 
-    const date = new Date(timestamp)
-
-console.log(user);
+    const date = new Date(parseInt(timestamp))
 
     $('.--id span').text(user.id)
     $('.--date span').text(`${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`)

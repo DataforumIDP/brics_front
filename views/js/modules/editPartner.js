@@ -70,7 +70,7 @@ async function updatePartnerData(data) {
 //     return etalon
 // }
 
-function different(obj, now) {
+export function different(obj, now) {
 
     let etalon = {} 
     Object.keys(obj).forEach(item => {

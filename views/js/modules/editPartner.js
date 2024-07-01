@@ -91,7 +91,7 @@ export function openEditUser (id) {
 
     $('.--id span').text(user.id)
     $('.--date span').text(`${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`)
-    $('.--e-fio').val(`${user.surname} ${user.name} ${user.lastname??''}`)
+    $('.--e-fio').val(`${user.surname} ${user.name} ${user.lastname==null ? '' : user.lastname}`)
     $('.--e-passport').val(user.passport)
     $('.--e-grade').val(user.grade)
     $('.--e-activity').val(user.activity)

@@ -29,6 +29,8 @@ async function saveEdit() {
     
     processedData = noEmpty(processedData)
 
+    if (Object.values(processedData).includes(null)) return false
+
     if (JSON.stringify(processedData) != '{}') {
         const [result, err] = await updatePartnerData(processedData)
     

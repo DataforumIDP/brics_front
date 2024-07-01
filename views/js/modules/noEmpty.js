@@ -6,7 +6,7 @@ export function noEmpty(obj) {
         if (obj[item] !== '') {
             etalon[item] = obj[item]
         } else {
-            etalon[item] = 'Незаполнено'
+            etalon[item] = null
         }
     })
     return etalon

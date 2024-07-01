@@ -102,7 +102,7 @@ export async function updateUserData() {
     const data = {
         name: ($('.--e-fio').val()).trim().split(' ')[1],
         surname: ($('.--e-fio').val()).trim().split(' ')[0],
-        lastname: ($('.--e-fio').val()).trim().split(' ')[2],
+        lastname: ($('.--e-fio').val()).trim().split(' ')[2] ?? null,
         passport: $('.--e-passport').val(),
         grade: $('.--e-grade').val(),
         activity: $('.--e-activity').val(),

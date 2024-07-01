@@ -1,10 +1,12 @@
 import { actionInit } from "./modules/actionMenu.js";
 import { checkboxControl } from "./modules/checkbox.js";
+import { clearEditModal, orgModalInit } from "./modules/editOrg.js";
 import { exit } from "./modules/exit.js";
 import { filtrationInit } from "./modules/filtration.js";
-import { modal } from "./modules/modal.js";
+import { modal, openModal } from "./modules/modal.js";
 import { accreditationInAction, deleteInAction, downloadPartnerList, editInAction, orgscreenInit, toggleSelect, toggleType, updateParams } from "./modules/orgScreen.js";
 import { searchInputInit, serchFunctionForOrg } from "./modules/searchInput.js";
+import { typeListInit } from "./modules/typeList.js";
 
 filtrationInit()
 checkboxControl('.type-check', toggleType, false)
@@ -15,7 +17,9 @@ actionInit({
     edit: editInAction,
     accr: accreditationInAction
 })
+typeListInit()
 
+orgModalInit()
 
 $('.table__body').overlayScrollbars({ className: "os-theme-dark" });
 

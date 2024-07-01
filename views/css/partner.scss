@@ -481,11 +481,16 @@ $index: calc(1vw + 1vh);
 
 .edit-input {
     position: relative;
+    z-index: 10;
     width: 100%;
     &:not(:last-child) {
         margin-bottom: calc($index * 0.6);
     }
     // .edit-input__title
+
+    &.--readonly &__title {
+        color: #7e7e7e;
+    }
 
     &__title {
         position: absolute;
@@ -507,6 +512,7 @@ $index: calc(1vw + 1vh);
         width: 100%;
         border-radius: 8px;
         border: 1px solid var(--cloudcityconf-com-mariner, #2c49da);
+        border: 1px solid var(--cloudcityconf-com-mariner, #2c49da);
         background: #eeecf4;
         padding: 6px 10px;
         color: var(--cloudcityconf-com-san-juan, #31456a);
@@ -516,6 +522,10 @@ $index: calc(1vw + 1vh);
         font-weight: 400;
         line-height: 27px; /* 135% */
         outline: none;
+    }
+
+    &.--readonly &__inp {
+        border: 1px solid #bbbbbb;
     }
     textarea {
         height: 90px;
@@ -538,6 +548,44 @@ $index: calc(1vw + 1vh);
             border-top: 1px solid var(--cloudcityconf-com-mariner, #2c49da);
             border-bottom: 1px solid var(--cloudcityconf-com-mariner, #2c49da);
             border-radius: 0 10px 10px 0;
+        }
+    }
+}
+
+.type-list {
+    position: absolute;
+    width: 100%;
+    border-radius: 16px;
+    background: #fafbfc;
+    padding: 15px;
+    z-index: 12;
+    top: calc(100% + 10px);
+    max-height: 200px;
+    // overflow-y: auto;
+}
+
+.list {
+    // .list__item
+
+    &__item {
+        padding: 5px 20px;
+        color: #37343a;
+        font-family: "Open Sans";
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        border-radius: 22px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        &:hover {
+            border-radius: 22px;
+            color: #3769fa;
+            cursor: pointer;
+        }
+
+        &:not(:last-child) {
+            margin-bottom: 5px;
         }
     }
 }

@@ -130,20 +130,54 @@
                 </div>
                 <div class="edit-input">
                     <h3 class="edit-input__title">ФИО</h3>
-                    <input type="text" maxlengdiv="200" class="edit-input__inp --e-fio">
+                    <input type="text" maxlengdiv="200" value="Иванов Иван Иванович" class="edit-input__inp --e-fio">
+                </div>
+                <div class="edit-input --readonly">
+                    <h3 class="edit-input__title">Паспорт</h3>
+                    <input type="text" maxlengdiv="200" value="Не указан" readonly class="edit-input__inp --e-passport">
                 </div>
                 <div class="edit-input">
-                    <h3 class="edit-input__title">Паспорт</h3>
-                    <input type="text" maxlengdiv="200" class="edit-input__inp --e-passport">
+                    <h3 class="edit-input__title">Организация</h3>
+                    <input type="text" maxlengdiv="200" value="ДатиаФорма" class="edit-input__inp --e-organization">
                 </div>
                 <div class="edit-input">
                     <h3 class="edit-input__title">Должность</h3>
-                    <input type="text" maxlengdiv="200" class="edit-input__inp --e-grade">
+                    <input type="text" maxlengdiv="200" value="Босс босов" class="edit-input__inp --e-grade">
                 </div>
-                <div class="edit-input">
+                <!-- <div class="edit-input --none">
                     <h3 class="edit-input__title">Вид деятельности</h3>
-                    <input type="text" maxlengdiv="200" class="edit-input__inp --e-activity">
+                    <input type="text" maxlengdiv="200" value="Фрилансер" readonly class="edit-input__inp --e-activity">
+                </div> -->
+                <div class="edit-input type --readonly">
+                    <h3 class="edit-input__title">Тип</h3>
+                    <input type="text" maxlengdiv="200" id="type" value="Участник" readonly class="edit-input__inp --e-type">
+                    <div class="type-list list --none">
+                        <div d-type="attendees" class="list__item type-i">Участник</div>
+                        <div d-type="smi" class="list__item type-i">СМИ</div>
+                        <div d-type="speacker" class="list__item type-i">Спикер</div>
+                    </div>
+                    <div class="edit-input__accreditation accreditation --true">
+                        <div class="accreditation__holder">Не аккредитован</div>
+                        <div class="accreditation__btn --none">Аккредитовать </div>
+                    </div>
                 </div>
+                <div class="edit-input  --over">
+                    <h3 class="edit-input__title">Страна</h3>
+                    <input type="text" maxlengdiv="200" value="СССР" class="edit-input__inp --e-country">
+                </div>
+                <div class="edit-input --over">
+                    <h3 class="edit-input__title">Город</h3>
+                    <input type="text" maxlengdiv="200" value="Сызрань" class="edit-input__inp --e-city">
+                </div>
+                <div class="edit-input --over">
+                    <h3 class="edit-input__title">E-mail</h3>
+                    <input type="text" maxlengdiv="200" value="trxt@example.com" class="edit-input__inp --e-mail">
+                </div>
+                <div class="edit-input --over">
+                    <h3 class="edit-input__title">Телефон</h3>
+                    <input type="text" maxlengdiv="200" value="+88005553535" class="edit-input__inp --e-phone">
+                </div>
+
 
                 <div class="btns">
                     <button class="save-btn btn --blue">Сохранить</button>

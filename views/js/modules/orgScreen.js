@@ -1,4 +1,5 @@
 import { getAuthorizeSettings } from "./authorizeSetting.js"
+import { openEditUser } from "./editOrg.js"
 import { getToken } from "./token.js"
 
 
@@ -151,7 +152,7 @@ const typeList = {
     stuff: 'Тех. персонал',
 }
 
-function convertType(type) {
+export function convertType(type) {
     return typeList[type]
 }
 

@@ -12,7 +12,7 @@ export function actionInit ({del, edit, accr}) {
     })
     $(document).on('click', '.--delete-u', del)
     $(document).on('click', '.--edit-u', edit)
-    $(document).on('click', '.--accr-u', accr)
+    if (accr !== undefined) $(document).on('click', '.--accr-u', accr)
 }
 
 

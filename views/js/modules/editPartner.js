@@ -42,7 +42,7 @@ async function saveEdit() {
         setP_Data(result.partner)
     }
 
-    $('.edit__btn').removeClass('--blue').find('span').text('Редактровать профиль')
+    $('.edit__btn').removeClass('--blue').find('span').text('Редактировать профиль')
     $('.list__btn').removeClass('--grey')
     $('.--views').removeClass('--none')
     $('.--edit').addClass('--none')

@@ -1,5 +1,6 @@
 import { actionInit } from "./modules/actionMenu.js";
 import { checkboxControl } from "./modules/checkbox.js";
+import { exit } from "./modules/exit.js";
 import { filtrationInit } from "./modules/filtration.js";
 import { modal } from "./modules/modal.js";
 import { accreditationInAction, deleteInAction, downloadPartnerList, editInAction, orgscreenInit, toggleSelect, toggleType, updateParams } from "./modules/orgScreen.js";
@@ -21,6 +22,7 @@ $('.table__body').overlayScrollbars({ className: "os-theme-dark" });
 modal('.modal')
 
 $('.--partner-btn').click(downloadPartnerList)
+$('.exit__content').click(exit)
 
 checkboxControl('.--user-check', function(){
     const userId = $(this).parent().parent().attr('d-id')

@@ -206,3 +206,36 @@ async function accreditationSend(id) {
         }
     })
 }
+
+export async function downloadPartnerList() {
+    const [res, err] = await getpartnerFile()
+
+    const href = URL.createObjectURL(res);
+    // create "a" HTML element with href to file & click
+    const link = document.createElement('a');
+    link.href = href;
+    link.setAttribute('download', 'file.pdf'); //or any other extension
+    document.body.appendChild(link);
+    link.click();
+    // clean up "a" element & remove ObjectURL
+    document.body.removeChild(link);
+    URL.revokeObjectURL(href);
+}
+
+
+async function getpartnerFile(){
+    try {
+        const result = await axios({
+            url: 'https://brics.wpdataforum.ru/api/admin/partners/download',
+            method: 'GET',
+            responseType: 'blob', // important
+            ...getAuthorizeSettings()
+        })
+
+        console.log(result);
+
+        return [result.data, null]
+    } catch ({ response }) {
+        return [null, response]
+    }
+}

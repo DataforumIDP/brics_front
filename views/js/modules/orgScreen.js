@@ -84,6 +84,7 @@ export async function getAndFillUsers() {
     const [res, err] = await getUserList()
     userList = res.users
     fillUserList(userList)
+    selectedRows = []
 }
 
 export function getUser(id = null) {
@@ -146,6 +147,8 @@ const typeList = {
     smi: 'СМИ',
     speacker: 'Спикер',
     org: 'Организатор',
+    vip: 'VIP',
+    stuff: 'Тех. персонал',
 }
 
 function convertType(type) {
@@ -215,7 +218,7 @@ export async function downloadPartnerList() {
     // create "a" HTML element with href to file & click
     const link = document.createElement('a');
     link.href = href;
-    link.setAttribute('download', 'file.pdf'); //or any other extension
+    link.setAttribute('download', 'file.xlsx'); //or any other extension
     document.body.appendChild(link);
     link.click();
     // clean up "a" element & remove ObjectURL

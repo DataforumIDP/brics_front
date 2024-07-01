@@ -76,7 +76,7 @@ function pasteUserInTable(user) {
             <div class="table__item --0">
                 <div class="checkbox"></div>
             </div>
-            <div class="table__item --5">${user.surname} ${user.name} ${user.lastname}</div>
+            <div class="table__item --5">${user.surname} ${user.name} ${user.lastname ?? ''}</div>
             <div class="table__item --3">${user.passport ?? ''}</div>
             <div class="table__item --5">${user.grade ?? ''}</div>
             <div class="table__item --4">${user.activity ?? ''}</div>

@@ -98,9 +98,44 @@ function pasteUserInTable(user) {
 let selectedRows = []
 
 export function toggleSelect(val) {
+    val = parseInt(val)
     if (selectedRows.includes(val)) selectedRows = selectedRows.filter(item => item != val)
     else selectedRows.push(val)
+
+    $(".--check-all").attr('val', new Set(selectedRows).size == userList.length ? 'true' : 'false'  )
     downloadListBtnText(selectedRows)
+}
+
+export async function downloadList () {
+    const [res, err] = await getpartnerFile()
+
+    const href = URL.createObjectURL(res);
+    // create "a" HTML element with href to file & click
+    const link = document.createElement('a');
+    link.href = href;
+    link.setAttribute('download', 'partners.xlsx'); //or any other extension
+    document.body.appendChild(link);
+    link.click();
+    // clean up "a" element & remove ObjectURL
+    document.body.removeChild(link);
+    URL.revokeObjectURL(href);
+}
+
+async function getpartnerFile() {
+    try {
+        const result = await axios({
+            url: 'https://brics.wpdataforum.ru/api/partner/download',
+            method: 'POST',
+            data: {
+                ids: selectedRows
+            },
+            responseType: 'blob', // important
+            ...getAuthorizeSettings()
+        })
+        return [result.data, null]
+    } catch ({ response }) {
+        return [null, response]
+    }
 }
 
 export function toggleAll() {
@@ -188,3 +223,5 @@ export function editInAction () {
     $('.action.--active').removeClass('--active')
     openEditUser(userId)
 }
+
+

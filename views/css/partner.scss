@@ -41,6 +41,7 @@ $index: calc(1vw + 1vh);
             padding: 32px 28px;
             flex-direction: column;
             gap: 22px;
+            background: #F1F0F6;
         }
     }
 
@@ -76,6 +77,12 @@ $index: calc(1vw + 1vh);
                 14px 14px 35px 0px rgba(228, 226, 234, 0.9);
         }
     }
+}
+
+.conteiner__btns {
+    display: flex;
+    align-items: center;
+    justify-content: end;
 }
 .content {
     display: flex;
@@ -442,7 +449,7 @@ $index: calc(1vw + 1vh);
             background: #e9e7ef;
         }
     }
-    &.header-btn {
+    &.header-btn, &.download-list-btn {
         padding: 10px 17px;
         border-radius: 8px;
         border: 1px solid rgba(44, 73, 218, 0.44);
@@ -459,6 +466,12 @@ $index: calc(1vw + 1vh);
         &:hover {
             border: 1px solid #2c49da;
         }
+    }
+
+    &.download-list-btn { 
+        background: #3769fa;
+        color: #fff;
+        min-width: 250px;
     }
 }
 
@@ -654,6 +667,10 @@ $index: calc(1vw + 1vh);
         align-items: center;
     }
 
+    &__row:not(:last-child) {
+        border-bottom: 1px solid rgba(167, 181, 201, 0.34);
+    }
+
     &__header {
         border-radius: 8px;
         background: rgba(167, 181, 201, 0.2);
@@ -691,6 +708,7 @@ $index: calc(1vw + 1vh);
 }
 .--0 {
     flex: 1 1 1%;
+    padding-left: 10px;
 }
 .--5 {
     flex: 2 1 20%;

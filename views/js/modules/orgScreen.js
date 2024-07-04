@@ -1,4 +1,5 @@
 import { getAuthorizeSettings } from "./authorizeSetting.js"
+import { downloadListBtnText } from "./downloadListBtn.js"
 import { openEditUser } from "./editOrg.js"
 import { getToken } from "./token.js"
 
@@ -42,7 +43,7 @@ async function uploadUserFile(file) {
             const result = await axios(params)
             resolve([result.data, null])
 
-        } catch ({response}) {
+        } catch ({ response }) {
             resolve([null, response.data])
         }
     })
@@ -78,7 +79,25 @@ let selectedRows = []
 export function toggleSelect(val) {
     if (selectedRows.includes(val)) selectedRows = selectedRows.filter(item => item != val)
     else selectedRows.push(val)
+    downloadListBtnText(selectedRows)
 }
+
+export function toggleAll() {
+    const val = $(this).attr('val') == 'true'
+
+    if (val) {
+        selectedRows = userList.map(item => item.id)
+        $(".--user-check").attr('val', 'true')
+    } else {
+        selectedRows = []
+        $(".--user-check").attr('val', 'false')
+    }
+    console.log(selectedRows);
+
+    downloadListBtnText(selectedRows)
+}
+
+
 let userList = []
 
 export async function getAndFillUsers() {
@@ -228,7 +247,7 @@ export async function downloadPartnerList() {
 }
 
 
-async function getpartnerFile(){
+async function getpartnerFile() {
     try {
         const result = await axios({
             url: 'https://brics.wpdataforum.ru/api/admin/partners/download',

@@ -41,7 +41,7 @@ $index: calc(1vw + 1vh);
             padding: 32px 28px;
             flex-direction: column;
             gap: 22px;
-            background: #F1F0F6;
+            background: #f1f0f6;
         }
     }
 
@@ -449,7 +449,8 @@ $index: calc(1vw + 1vh);
             background: #e9e7ef;
         }
     }
-    &.header-btn, &.download-list-btn {
+    &.header-btn,
+    &.download-list-btn {
         padding: 10px 17px;
         border-radius: 8px;
         border: 1px solid rgba(44, 73, 218, 0.44);
@@ -462,18 +463,22 @@ $index: calc(1vw + 1vh);
         &.add-btn {
             background: #3769fa;
             color: #fff;
-        }
-        &:hover {
-            border: 1px solid #2c49da;
-            background: #537fff;
+            &:hover {
+                border: 1px solid #2c49da;
+                background: #537fff;
+            }
         }
     }
 
-    &.download-list-btn { 
+    &.download-list-btn {
         background: #3769fa;
         color: #fff;
         min-width: 230px;
         padding: 12px 17px;
+        &:hover {
+            border: 1px solid #2c49da;
+            background: #537fff;
+        }
     }
 }
 

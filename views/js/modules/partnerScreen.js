@@ -3,6 +3,7 @@ import { updateUserData } from "./editPartner.js"
 import { openModal } from "./modal.js"
 import { getToken } from "./token.js"
 import { openEditUser } from "./editPartner.js"
+import { downloadListBtnText } from "./downloadListBtn.js"
 
 export function partnerScreenInit() {
     $('.delete-btn').click(deleteList)
@@ -75,7 +76,7 @@ function pasteUserInTable(user) {
     $('.table__body .os-content').append(`
         <div d-id="${user.id}" class="table__row">
             <div class="table__item --0">
-                <div class="checkbox"></div>
+                <div class="checkbox --user-check"></div>
             </div>
             <div class="table__item --5">${user.surname} ${user.name} ${user.lastname ?? ''}</div>
             <div class="table__item --3">${user.passport ?? ''}</div>
@@ -99,6 +100,21 @@ let selectedRows = []
 export function toggleSelect(val) {
     if (selectedRows.includes(val)) selectedRows = selectedRows.filter(item => item != val)
     else selectedRows.push(val)
+    downloadListBtnText(selectedRows)
+}
+
+export function toggleAll() {
+    const val = $(this).attr('val') == 'true'
+
+    if (val) {
+        selectedRows = userList.map(item => item.id)
+        $(".--user-check").attr('val', 'true')
+    } else {
+        selectedRows = []
+        $(".--user-check").attr('val', 'false')
+    }
+
+    downloadListBtnText(selectedRows)
 }
 
 export async function deleteUser(id) {

@@ -7,6 +7,7 @@ import { modal, openModal } from "./modules/modal.js";
 import {
     accreditationInAction,
     deleteInAction,
+    downloadAttendeesList,
     downloadPartnerList,
     editInAction,
     orgscreenInit,
@@ -37,6 +38,7 @@ $('.table__body').overlayScrollbars({ className: "os-theme-dark" });
 modal('.modal')
 
 $('.--partner-btn').click(downloadPartnerList)
+$('.download-list-btn').click(downloadAttendeesList)
 $('.exit__content').click(exit)
 
 checkboxControl('.--user-check', function () {

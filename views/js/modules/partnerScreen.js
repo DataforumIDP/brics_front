@@ -106,6 +106,38 @@ export function toggleSelect(val) {
     downloadListBtnText(selectedRows)
 }
 
+export async function downloadList () {
+    const [res, err] = await getpartnerFile()
+
+    const href = URL.createObjectURL(res);
+    // create "a" HTML element with href to file & click
+    const link = document.createElement('a');
+    link.href = href;
+    link.setAttribute('download', 'partners.xlsx'); //or any other extension
+    document.body.appendChild(link);
+    link.click();
+    // clean up "a" element & remove ObjectURL
+    document.body.removeChild(link);
+    URL.revokeObjectURL(href);
+}
+
+async function getpartnerFile() {
+    try {
+        const result = await axios({
+            url: 'https://brics.wpdataforum.ru/api/partner/download',
+            method: 'POST',
+            data: {
+                ids: selectedRows
+            },
+            responseType: 'blob', // important
+            ...getAuthorizeSettings()
+        })
+        return [result.data, null]
+    } catch ({ response }) {
+        return [null, response]
+    }
+}
+
 export function toggleAll() {
     const val = $(this).attr('val') == 'true'
 
@@ -191,3 +223,5 @@ export function editInAction () {
     $('.action.--active').removeClass('--active')
     openEditUser(userId)
 }
+
+

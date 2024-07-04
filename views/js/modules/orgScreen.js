@@ -77,8 +77,11 @@ export function updateParams(key, val) {
 let selectedRows = []
 
 export function toggleSelect(val) {
+    val = parseInt(val)
     if (selectedRows.includes(val)) selectedRows = selectedRows.filter(item => item != val)
     else selectedRows.push(val)
+
+    $(".--check-all").attr('val', new Set(selectedRows).size == userList.length ? 'true' : 'false'  )
     downloadListBtnText(selectedRows)
 }
 
@@ -92,7 +95,6 @@ export function toggleAll() {
         selectedRows = []
         $(".--user-check").attr('val', 'false')
     }
-    console.log(selectedRows);
 
     downloadListBtnText(selectedRows)
 }

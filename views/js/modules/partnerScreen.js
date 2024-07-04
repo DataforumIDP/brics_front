@@ -98,8 +98,11 @@ function pasteUserInTable(user) {
 let selectedRows = []
 
 export function toggleSelect(val) {
+    val = parseInt(val)
     if (selectedRows.includes(val)) selectedRows = selectedRows.filter(item => item != val)
     else selectedRows.push(val)
+
+    $(".--check-all").attr('val', new Set(selectedRows).size == userList.length ? 'true' : 'false'  )
     downloadListBtnText(selectedRows)
 }
 

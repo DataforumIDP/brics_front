@@ -49,7 +49,7 @@ export async function userReg() {
     $('.modal__title').text(getData('type') == 'attendees' ? titles.success_a[getLang()] : titles.success_t[getLang()])
     openModal('.modal')
 
-    await awaiting(5)
+    await awaiting(2)
     location.reload()
 }
 

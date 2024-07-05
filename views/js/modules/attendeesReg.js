@@ -2,6 +2,7 @@
 import { getLang } from "./langModel.js"
 import { openModal } from "./modal.js"
 import { getData } from "./regData.js"
+import { awaiting } from "./awaiting.js"
 
 const titles = {
     success_a: {
@@ -48,6 +49,8 @@ export async function userReg() {
     $('.modal__title').text(getData('type') == 'attendees' ? titles.success_a[getLang()] : titles.success_t[getLang()])
     openModal('.modal')
 
+    await awaiting(5)
+    location.reload()
 }
 
 

@@ -3,6 +3,7 @@ import { updateUserData } from "./editPartner.js"
 import { openModal } from "./modal.js"
 import { getToken } from "./token.js"
 import { openEditUser } from "./editPartner.js"
+import { downloadListBtnText } from "./downloadListBtn.js"
 
 export function partnerScreenInit() {
     $('.delete-btn').click(deleteList)
@@ -46,6 +47,7 @@ export async function getAndFillUsers() {
     const [res, err] = await getUserList()
     userList = res.users
     fillUserList(userList)
+    selectedRows = []
 }
 
 export function getUser(id = null) {
@@ -74,12 +76,12 @@ function pasteUserInTable(user) {
     $('.table__body .os-content').append(`
         <div d-id="${user.id}" class="table__row">
             <div class="table__item --0">
-                <div class="checkbox"></div>
+                <div class="checkbox --user-check"></div>
             </div>
-            <div class="table__item --5">${user.surname} ${user.name} ${user.lastname}</div>
+            <div class="table__item --5">${user.surname} ${user.name} ${user.lastname ?? ''}</div>
             <div class="table__item --3">${user.passport ?? ''}</div>
             <div class="table__item --5">${user.grade ?? ''}</div>
-            <div class="table__item --4">${user.activity ?? ''}</div>
+            <div class="table__item --4 --none">${user.activity ?? ''}</div>
             <div class="table__item --2">
                 <div class="action">
                     <div class="action__ico"></div>
@@ -96,8 +98,58 @@ function pasteUserInTable(user) {
 let selectedRows = []
 
 export function toggleSelect(val) {
+    val = parseInt(val)
     if (selectedRows.includes(val)) selectedRows = selectedRows.filter(item => item != val)
     else selectedRows.push(val)
+
+    $(".--check-all").attr('val', new Set(selectedRows).size == userList.length ? 'true' : 'false'  )
+    downloadListBtnText(selectedRows)
+}
+
+export async function downloadList () {
+    const [res, err] = await getpartnerFile()
+
+    const href = URL.createObjectURL(res);
+    // create "a" HTML element with href to file & click
+    const link = document.createElement('a');
+    link.href = href;
+    link.setAttribute('download', 'partners.xlsx'); //or any other extension
+    document.body.appendChild(link);
+    link.click();
+    // clean up "a" element & remove ObjectURL
+    document.body.removeChild(link);
+    URL.revokeObjectURL(href);
+}
+
+async function getpartnerFile() {
+    try {
+        const result = await axios({
+            url: 'https://brics.wpdataforum.ru/api/partner/download',
+            method: 'POST',
+            data: {
+                ids: selectedRows
+            },
+            responseType: 'blob', // important
+            ...getAuthorizeSettings()
+        })
+        return [result.data, null]
+    } catch ({ response }) {
+        return [null, response]
+    }
+}
+
+export function toggleAll() {
+    const val = $(this).attr('val') == 'true'
+
+    if (val) {
+        selectedRows = userList.map(item => item.id)
+        $(".--user-check").attr('val', 'true')
+    } else {
+        selectedRows = []
+        $(".--user-check").attr('val', 'false')
+    }
+
+    downloadListBtnText(selectedRows)
 }
 
 export async function deleteUser(id) {
@@ -171,3 +223,5 @@ export function editInAction () {
     $('.action.--active').removeClass('--active')
     openEditUser(userId)
 }
+
+

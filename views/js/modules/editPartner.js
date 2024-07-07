@@ -29,6 +29,8 @@ async function saveEdit() {
     
     processedData = noEmpty(processedData)
 
+    if (Object.values(processedData).includes(null)) return false
+
     if (JSON.stringify(processedData) != '{}') {
         const [result, err] = await updatePartnerData(processedData)
     
@@ -42,7 +44,7 @@ async function saveEdit() {
         setP_Data(result.partner)
     }
 
-    $('.edit__btn').removeClass('--blue').find('span').text('Редактровать профиль')
+    $('.edit__btn').removeClass('--blue').find('span').text('Редактировать профиль')
     $('.list__btn').removeClass('--grey')
     $('.--views').removeClass('--none')
     $('.--edit').addClass('--none')
@@ -70,7 +72,7 @@ async function updatePartnerData(data) {
 //     return etalon
 // }
 
-function different(obj, now) {
+export function different(obj, now) {
 
     let etalon = {} 
     Object.keys(obj).forEach(item => {
@@ -87,11 +89,11 @@ export function openEditUser (id) {
 
     const timestamp = user.timestamp ?? new Date().getTime()
 
-    const date = new Date(timestamp)
+    const date = new Date(parseInt(timestamp))
 
     $('.--id span').text(user.id)
     $('.--date span').text(`${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`)
-    $('.--e-fio').val(`${user.surname} ${user.name} ${user.lastname??''}`)
+    $('.--e-fio').val(`${user.surname} ${user.name} ${user.lastname ?? ''}`)
     $('.--e-passport').val(user.passport)
     $('.--e-grade').val(user.grade)
     $('.--e-activity').val(user.activity)
@@ -102,7 +104,7 @@ export async function updateUserData() {
     const data = {
         name: ($('.--e-fio').val()).trim().split(' ')[1],
         surname: ($('.--e-fio').val()).trim().split(' ')[0],
-        lastname: ($('.--e-fio').val()).trim().split(' ')[2],
+        lastname: ($('.--e-fio').val()).trim().split(' ')[2] ?? null,
         passport: $('.--e-passport').val(),
         grade: $('.--e-grade').val(),
         activity: $('.--e-activity').val(),

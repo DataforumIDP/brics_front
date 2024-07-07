@@ -1,4 +1,8 @@
 import { getAuthorizeSettings } from "./authorizeSetting.js"
+import { downloadFileFromRes } from "./downloadFileFromRes.js"
+import { downloadListBtnText } from "./downloadListBtn.js"
+import { openEditUser } from "./editOrg.js"
+import { getToken } from "./token.js"
 
 
 export function orgscreenInit() {
@@ -74,15 +78,36 @@ export function updateParams(key, val) {
 let selectedRows = []
 
 export function toggleSelect(val) {
+    val = parseInt(val)
     if (selectedRows.includes(val)) selectedRows = selectedRows.filter(item => item != val)
     else selectedRows.push(val)
+
+    $(".--check-all").attr('val', new Set(selectedRows).size == userList.length ? 'true' : 'false'  )
+    downloadListBtnText(selectedRows)
 }
+
+export function toggleAll() {
+    const val = $(this).attr('val') == 'true'
+
+    if (val) {
+        selectedRows = userList.map(item => item.id)
+        $(".--user-check").attr('val', 'true')
+    } else {
+        selectedRows = []
+        $(".--user-check").attr('val', 'false')
+    }
+
+    downloadListBtnText(selectedRows)
+}
+
+
 let userList = []
 
 export async function getAndFillUsers() {
     const [res, err] = await getUserList()
     userList = res.users
     fillUserList(userList)
+    selectedRows = []
 }
 
 export function getUser(id = null) {
@@ -128,8 +153,8 @@ function pasteUserInTable(user) {
                 <div class="action">
                     <div class="action__ico"></div>
                     <div class="action__body">
+                    <div class="action__item --edit-u">Редактировать</div>
                         ${(['smi', 'speacker'].includes(user.type) && !user.accreditation) ? '<div class="action__item --accr-u">Аккредитовать</div>' : ''}
-                        <div class="action__item --edit-u">Редактировать</div>
                         <div class="action__item --delete-u">Удалить</div>
                     </div>
                 </div>
@@ -145,9 +170,11 @@ const typeList = {
     smi: 'СМИ',
     speacker: 'Спикер',
     org: 'Организатор',
+    vip: 'VIP',
+    stuff: 'Тех. персонал',
 }
 
-function convertType(type) {
+export function convertType(type) {
     return typeList[type]
 }
 
@@ -208,22 +235,33 @@ async function accreditationSend(id) {
 }
 
 export async function downloadPartnerList() {
-    const [res, err] = await getpartnerFile()
-
-    const href = URL.createObjectURL(res);
-    // create "a" HTML element with href to file & click
-    const link = document.createElement('a');
-    link.href = href;
-    link.setAttribute('download', 'file.pdf'); //or any other extension
-    document.body.appendChild(link);
-    link.click();
-    // clean up "a" element & remove ObjectURL
-    document.body.removeChild(link);
-    URL.revokeObjectURL(href);
+    const [res, err] = await getPartnerFile()
+   downloadFileFromRes(res)
 }
 
+export async function downloadAttendeesList() {
+    const [res, err] = await getAttendeesFile()
+   downloadFileFromRes(res, 'attendees')
+}
 
-async function getpartnerFile(){
+async function getAttendeesFile(){
+    try {
+        const result = await axios({
+            url: 'https://brics.wpdataforum.ru/api/admin/attendees/download',
+            method: 'POST',
+            data: {
+                ids: selectedRows
+            },
+            responseType: 'blob', // important
+            ...getAuthorizeSettings()
+        })
+        return [result.data, null]
+    } catch ({ response }) {
+        return [null, response]
+    }
+}
+
+async function getPartnerFile() {
     try {
         const result = await axios({
             url: 'https://brics.wpdataforum.ru/api/admin/partners/download',

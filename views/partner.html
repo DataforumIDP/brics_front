@@ -48,19 +48,19 @@
                         </div>
                         <div class="inputs --edit --none">
                             <div class="edit-input">
-                                <h3 class="edit-input__title">Название компании</h3>
+                                <h3 class="edit-input__title">Название компании <span>*</span></h3>
                                 <input type="text" maxlengdiv="200" class="edit-input__inp --e-organization">
                             </div>
                             <div class="edit-input">
-                                <h3 class="edit-input__title">Сайт</h3>
+                                <h3 class="edit-input__title">Сайт <span>*</span></h3>
                                 <input type="text" maxlengdiv="200" class="edit-input__inp --e-site">
                             </div>
                             <div class="edit-input">
-                                <h3 class="edit-input__title">Краткое описание</h3>
-                                <textarea maxlengdiv="200" class="edit-input__inp --e-description"></textarea>
+                                <h3 class="edit-input__title">ФИО ответстственного лица<span>*</span></h3>
+                                <input type="text" maxlengdiv="200" class="edit-input__inp --e-description">
                             </div>
                             <div class="edit-input">
-                                <h3 class="edit-input__title">Контакты</h3>
+                                <h3 class="edit-input__title">Контакты ответственного лица<span>*</span></h3>
                                 <textarea maxlengdiv="200" class="edit-input__inp --e-contacts"></textarea>
                             </div>
                         </div>
@@ -84,7 +84,7 @@
                     </div>
                     <div class="header__btns">
                         <button class="header-btn add-btn btn">Добавить <div class="ico"></div><input type="file" id="file"></button>
-                        <a href="./files/test.xlsx" download class="header-btn load-btn btn">
+                        <a href="./files/partner.xlsx" download class="header-btn load-btn btn">
                             <div class="ico"></div> Скачать шаблон
                         </a>
                         <div class="header-btn delete-btn"></div>
@@ -93,12 +93,12 @@
                 <div class="conteiner__body body">
                     <div class="table">
                         <div class="table__header">
-                            <div class="table__item --0"></div>
+                            <div class="table__item --0"><div class="checkbox --check-all"></div></div>
                             <div class="table__item --5 --name">ФИО <div class="order"></div>
                             </div>
                             <div class="table__item --3">ПАСпорт</div>
                             <div class="table__item --5">ДОЛЖНОСТЬ</div>
-                            <div class="table__item --4">ВИД ДЕЯТЕЛЬНОСТИ</div>
+                            <div class="table__item --4 --none">ВИД ДЕЯТЕЛЬНОСТИ</div>
                             <div class="table__item --2">Действие</div>
                         </div>
                         <div class="table__body">
@@ -120,11 +120,16 @@
                                     </div>
                                 </div>
                             </div> -->
-                            
+
                         </div>
                     </div>
                 </div>
-                <button class="list-btn btn back-to-profile"><div class="back-ico"></div> Профиль</button>
+                <div class="conteiner__btns">
+                    <button class="btn download-list-btn">Скачать всё</button>
+                </div>
+                <button class="list-btn btn back-to-profile">
+                    <div class="back-ico"></div> Профиль
+                </button>
             </div>
         </main>
         <div class="exit">
@@ -151,11 +156,11 @@
                     <h3 class="edit-input__title">Должность</h3>
                     <input type="text" maxlengdiv="60" class="edit-input__inp --e-grade">
                 </div>
-                <div class="edit-input">
+                <div class="edit-input --none">
                     <h3 class="edit-input__title">Вид деятельности</h3>
                     <input type="text" maxlengdiv="60" class="edit-input__inp --e-activity">
                 </div>
-                
+
                 <div class="btns">
                     <button class="save-btn btn --blue">Сохранить</button>
                     <button class="cancel-btn btn">Отмена</button>

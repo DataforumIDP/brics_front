@@ -21,7 +21,7 @@
         <main class="main">
             <div class="main__decor"></div>
 
-            <div class="main__conteiner">
+            <div class="main__conteiner --users">
                 <div class="conteiner__header header">
                     <div class="header__search search">
                         <input type="text" class="search__inp">
@@ -39,6 +39,10 @@
                                     <span>Участник</span>
                                     <div class="checkbox type-check"></div>
                                 </div>
+                                <div d-type="stuff" class="custom-select__item">
+                                    <span>Тех. персонал</span>
+                                    <div class="checkbox type-check"></div>
+                                </div>
                                 <div d-type="partner" class="custom-select__item">
                                     <span>Партнёр</span>
                                     <div class="checkbox type-check"></div>
@@ -51,6 +55,10 @@
                                     <span>СМИ</span>
                                     <div class="checkbox type-check"></div>
                                 </div>
+                                <div d-type="vip" class="custom-select__item">
+                                    <span>VIP</span>
+                                    <div class="checkbox type-check"></div>
+                                </div>
                                 <div d-type="org" class="custom-select__item">
                                     <span>Организатор</span>
                                     <div class="checkbox type-check"></div>
@@ -60,7 +68,7 @@
                         <a class="header-btn load-btn --partner-btn btn">
                             <div class="ico"></div> Скачать партнеров
                         </a>
-                        <a href="./files/test.xlsx" download class="header-btn load-btn btn">
+                        <a href="./files/org.xlsx" download class="header-btn load-btn btn">
                             <div class="ico"></div> Скачать шаблон
                         </a>
                         <div class="header-btn delete-btn"></div>
@@ -69,7 +77,7 @@
                 <div class="conteiner__body body">
                     <div class="table">
                         <div class="table__header">
-                            <div class="table__item --0"></div>
+                            <div class="table__item --0"><div class="checkbox --check-all"></div></div>
                             <div class="table__item --3">Тип </div>
                             <div class="table__item --5 --name">ФИО <div class="order"></div>
                             </div>
@@ -106,6 +114,9 @@
                         </div>
                     </div>
                 </div>
+                <div class="conteiner__btns">
+                    <button class="btn download-list-btn">Скачать всё</button>
+                </div>
             </div>
         </main>
         <div class="exit">
@@ -122,20 +133,57 @@
                 </div>
                 <div class="edit-input">
                     <h3 class="edit-input__title">ФИО</h3>
-                    <input type="text" maxlengdiv="200" class="edit-input__inp --e-fio">
+                    <input type="text" maxlengdiv="200" value="Иванов Иван Иванович" class="edit-input__inp --e-fio">
+                </div>
+                <div class="edit-input --readonly">
+                    <h3 class="edit-input__title">Паспорт</h3>
+                    <input type="text" maxlengdiv="200" value="Не указан" readonly class="edit-input__inp --e-passport">
                 </div>
                 <div class="edit-input">
-                    <h3 class="edit-input__title">Паспорт</h3>
-                    <input type="text" maxlengdiv="200" class="edit-input__inp --e-passport">
+                    <h3 class="edit-input__title">Организация</h3>
+                    <input type="text" maxlengdiv="200" value="ДатиаФорма" class="edit-input__inp --e-organization">
                 </div>
                 <div class="edit-input">
                     <h3 class="edit-input__title">Должность</h3>
-                    <input type="text" maxlengdiv="200" class="edit-input__inp --e-grade">
+                    <input type="text" maxlengdiv="200" value="Босс босов" class="edit-input__inp --e-grade">
                 </div>
-                <div class="edit-input">
+                <!-- <div class="edit-input --none">
                     <h3 class="edit-input__title">Вид деятельности</h3>
-                    <input type="text" maxlengdiv="200" class="edit-input__inp --e-activity">
+                    <input type="text" maxlengdiv="200" value="Фрилансер" readonly class="edit-input__inp --e-activity">
+                </div> -->
+                <div class="edit-input type --readonly">
+                    <h3 class="edit-input__title">Тип</h3>
+                    <input type="text" maxlengdiv="200" id="type" value="Участник" readonly class="edit-input__inp --e-type">
+                    <div class="type-list list --none">
+                        <div d-type="attendees" class="list__item type-i">Участник</div>
+                        <div d-type="stuff" class="list__item type-i">Тех. персонал</div>
+                        <div d-type="smi" class="list__item type-i">СМИ</div>
+                        <div d-type="speacker" class="list__item type-i">Спикер</div>
+                        <div d-type="vip" class="list__item type-i">VIP</div>
+                        <div d-type="org" class="list__item type-i">Организатор</div>
+                    </div>
+                    <div class="edit-input__accreditation accreditation --true">
+                        <div class="accreditation__holder">Не аккредитован</div>
+                        <div class="accreditation__btn --none">Аккредитовать </div>
+                    </div>
                 </div>
+                <div class="edit-input  --over">
+                    <h3 class="edit-input__title">Страна</h3>
+                    <input type="text" maxlengdiv="200" value="СССР" class="edit-input__inp --e-country">
+                </div>
+                <div class="edit-input --over">
+                    <h3 class="edit-input__title">Город</h3>
+                    <input type="text" maxlengdiv="200" value="Сызрань" class="edit-input__inp --e-city">
+                </div>
+                <div class="edit-input --over">
+                    <h3 class="edit-input__title">E-mail</h3>
+                    <input type="text" maxlengdiv="200" value="trxt@example.com" class="edit-input__inp --e-mail">
+                </div>
+                <div class="edit-input --over">
+                    <h3 class="edit-input__title">Телефон</h3>
+                    <input type="text" maxlengdiv="200" value="+88005553535" class="edit-input__inp --e-phone">
+                </div>
+
 
                 <div class="btns">
                     <button class="save-btn btn --blue">Сохранить</button>

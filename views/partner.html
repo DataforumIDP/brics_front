@@ -17,7 +17,7 @@
 
 <body>
     <div class="wrapper">
-        <main class="main">
+        <main class="main ">
             <div class="main__decor"></div>
 
             <div class="main__conteiner --profile">
@@ -132,12 +132,31 @@
                 </button>
             </div>
         </main>
-        <div class="exit">
+        <div class="exit ">
             <div class="exit__content">
                 <div class="exit__ico"></div>
             </div>
         </div>
-        <div class="modal edit-modal">
+        <div class="mobile --none">
+            <header class="mobile__header m-header">
+                <div class="m-header__logo">БРИКС</div>
+                <div class="m-header__btn">
+                    <div class="m-header__line"></div>
+                    <div class="m-header__line"></div>
+                    <div class="m-header__line"></div>
+                </div>
+            </header>
+            
+            <menu class="mobile__menu menu --open">
+                <div class="menu__close"></div>
+                <li><button class="menu__item">ПРОФИЛЬ</button></li>
+                <li><button class="menu__item">СПИСОК</button></li>
+                <li><button class="menu__item">СКАЧАТЬ СПРАВОЧНИК</button></li>
+                <li><button class="menu__item">СКАЧАТЬ ШАБЛОН</button></li>
+                <li><button class="menu__item">ВЫХОД</button></li>
+            </menu>
+        </div>
+        <div class="modal edit-modal --none">
             <div class="modal__back"></div>
             <div class="modal__content">
                 <div class="modal__header">
@@ -167,7 +186,7 @@
                 </div>
             </div>
         </div>
-        <div class="modal error-modal">
+        <div class="modal error-modal --none">
             <div class="modal__back"></div>
             <div class="modal__content">
                 <h2 class="modal__title">Ошибка добавления</h2>

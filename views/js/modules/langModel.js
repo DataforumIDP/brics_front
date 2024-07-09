@@ -5,8 +5,8 @@ const content = [
         selector: '.decor__title',
         attr: 'text',
         text: {
-            ru: 'Форум будущего БРИКС. Облачные города',
-            en: 'BRICS Future Forum. Cloud Cities'
+            ru: 'Облачные города. Форум о будущем городов БРИКС',
+            en: 'BRICS Urban Future Forum'
         }
     },
     {

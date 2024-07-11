@@ -2,6 +2,6 @@
 
 
 export function toggleHiddenContent() {
-    const parent = $(this).parent().parent()
+    const parent = $(this).parent()
     parent.hasClass('--opened') ? parent.removeClass('--opened') : parent.addClass('--opened')
 }

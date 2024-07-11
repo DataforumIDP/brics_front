@@ -7,7 +7,7 @@ import { getToken } from "./token.js"
 
 export function orgscreenInit() {
     $('.delete-btn').click(deleteList)
-    $('#file').change(regNewUsers)
+    $('.file').change(regNewUsers)
     getAndFillUsers()
 }
 
@@ -62,7 +62,6 @@ export function toggleType(e) {
     if (getParams.types.includes(type)) getParams.types = getParams.types.filter(item => item != type)
     else getParams.types.push(type)
     getAndFillUsers()
-    console.log(getParams.types);
 }
 
 export function getSearchParams(key) {
@@ -195,12 +194,11 @@ function pasteUserInMobTable(user) {
                 </div>
                 <div class="input__line">
                     <h2 class="input__title">Действие</h2>
-                </div>
-                <div class="btns">
-                    <div class="del-u-mobile --delete-u"></div>
-                    <div class="edit-u-mobile --edit-u"></div>
-                    ${(['smi', 'speacker'].includes(user.type) && !user.accreditation) ? '<div class="accr-u-mobile --accr-u"></div>' : ''}
-                    
+                    <div class="btns">
+                        <div class="del-u-mobile --delete-u"></div>
+                        <div class="edit-u-mobile --edit-u"></div>
+                        ${(['smi', 'speacker'].includes(user.type) && !user.accreditation) ? `<div class="accr-u-mobile --accr-u"></div>` : ''}
+                    </div>
                 </div>
             </div>
         </div>

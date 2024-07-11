@@ -44,9 +44,11 @@ $('.--partner-btn').click(downloadPartnerList)
 $('.download-list-btn').click(downloadAttendeesList)
 $('.exit__content, .--exit').click(exit)
 
-checkboxControl('.--user-check', function () {
+checkboxControl('.--user-check', function (e) {
     const userId = $(this).parent().parent().attr('d-id')
     toggleSelect(userId)
 })
 
-$(document).on('click', '.open-btn', toggleHiddenContent)
+$('.filtration__holder').click(toggleHiddenContent)
+
+$(document).on('click', '.mt-item__holder', toggleHiddenContent)

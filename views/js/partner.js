@@ -49,4 +49,4 @@ checkboxControl('.--check-all', toggleAll, false)
 
 $('.download-list-btn').click(downloadList)
 
-$(document).on('click', '.open-btn', toggleHiddenContent)
+$(document).on('click', '.mt-item__holder', toggleHiddenContent)

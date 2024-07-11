@@ -7,6 +7,7 @@ export function modal(sel) {
 }
 
 export async function openModal(sel) {
+    $('body').css({ overflow: 'hidden', posotion: 'fixed', top: 0, left: 0, height: '100vh', width: '100vw' })
     await applyStyles(sel);
     $(sel).css({
         zIndex: 22,
@@ -16,6 +17,7 @@ export async function openModal(sel) {
 
 export async function closeModal(sel) {
     $(sel).css({ opacity: 0 })
+    $('body').css({ overflow: 'auto', posotion: 'relative', height: 'initial', width: 'initial' })
     await awaiting(0.5)
     $(sel).css({ zIndex: 0 })
     $(sel).css({ display: 'none' })

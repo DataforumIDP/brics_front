@@ -1,4 +1,5 @@
 import { getAuthorizeSettings } from "./authorizeSetting.js"
+import { burgerMenuClose } from "./burgerMenu.js"
 import { fillPartnerData, getP_Data, setP_Data } from "./getPartnersData.js"
 import { closeModal, openModal } from "./modal.js"
 import { noEmpty } from "./noEmpty.js"
@@ -6,9 +7,37 @@ import { getAndFillUsers, getUser } from "./partnerScreen.js"
 
 let editMode = false
 
+export function isEdit() {
+    return editMode
+}
+
 export function toggleEditMode() {
     editMode = !editMode
-    editMode ? loadEditMode() : saveEdit()
+    editMode ? loadEditMode() : saveEdit('.main', () => {
+        $('.edit__btn').removeClass('--blue').find('span').text('Редактировать профиль')
+        $('.list__btn').removeClass('--grey')
+        $('.--views').removeClass('--none')
+        $('.--edit').addClass('--none')
+    })
+}
+
+export function toggleEditModeMob() {
+    editMode = !editMode
+    
+    editMode ? loadEditModeMob() : saveEdit('.mobile', ()=>{
+        $('.--mob-edit-btn').removeClass('--edited').html('Редактировать профиль  <div class="edit-ico"></div>')
+        $('.mob-inputs.--views').removeClass('--none')
+        $('.mob-inputs.--edit').addClass('--none')
+    })
+}
+
+function loadEditModeMob() {
+    // $('.edit__btn').addClass('--blue').find('span').text('Сохранить')
+    $('.--mob-edit-btn').addClass('--edited').html('Сохранить')
+    // $('.list__btn').addClass('--grey')
+    $('.mob-inputs.--views').addClass('--none')
+    $('.mob-inputs.--edit').removeClass('--none')
+    burgerMenuClose()
 }
 
 function loadEditMode() {
@@ -18,36 +47,35 @@ function loadEditMode() {
     $('.--edit').removeClass('--none')
 }
 
-async function saveEdit() {
+async function saveEdit(sel, func) {
     let data = {}
 
-    data.organization = $('.--e-organization').val()
-    data.description = $('.--e-description').val().trim()
-    data.site = $('.--e-site').val()
-    data.contacts = $('.--e-contacts').val().trim()
+    data.organization = $(sel + ' .--e-organization').val()
+    data.description = $(sel + ' .--e-description').val().trim()
+    data.site = $(sel + ' .--e-site').val()
+    data.contacts = $(sel + ' .--e-contacts').val().trim()
     let processedData = different(data, getP_Data())
-    
+
     processedData = noEmpty(processedData)
+
+    console.log(processedData);
 
     if (Object.values(processedData).includes(null)) return false
 
     if (JSON.stringify(processedData) != '{}') {
         const [result, err] = await updatePartnerData(processedData)
-    
+
         if (err !== null) {
             console.log(err);
             return
         }
-    
+
         fillPartnerData(result.partner)
-    
+
         setP_Data(result.partner)
     }
 
-    $('.edit__btn').removeClass('--blue').find('span').text('Редактировать профиль')
-    $('.list__btn').removeClass('--grey')
-    $('.--views').removeClass('--none')
-    $('.--edit').addClass('--none')
+    func()
 }
 
 
@@ -74,7 +102,7 @@ async function updatePartnerData(data) {
 
 export function different(obj, now) {
 
-    let etalon = {} 
+    let etalon = {}
     Object.keys(obj).forEach(item => {
         if (obj[item] != now[item]) etalon[item] = obj[item]
     })
@@ -83,7 +111,7 @@ export function different(obj, now) {
 
 let editedUser = {}
 
-export function openEditUser (id) {
+export function openEditUser(id) {
     const user = getUser(id)
     editedUser = user
 
@@ -119,11 +147,11 @@ export async function updateUserData() {
 async function updateUserSend(data, id) {
     return new Promise(async resolve => {
         try {
-            
+
             const result = await axios.patch(`https://brics.wpdataforum.ru/api/partner/${id}`, data, getAuthorizeSettings())
             resolve([result.data, null])
 
-        } catch ({response}) {
+        } catch ({ response }) {
             resolve([null, response])
         }
     })

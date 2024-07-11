@@ -1,7 +1,10 @@
+
 .modal {
     position: fixed;
     width: 100vw;
     height: 100vh;
+    max-height: 100vh;
+    overflow: auto;
     top: 0;
     left: 0;
     z-index: 0;
@@ -11,6 +14,7 @@
     justify-content: center;
     padding: 10px;
     transition: all 0.5s ease;
+
 
     &.--open {
         opacity: 1;
@@ -54,6 +58,8 @@
         z-index: 24;
         max-width: 540px;
         width: 100%;
+        max-height: 90vh;
+        overflow: auto;
         border-radius: 40px;
         background: linear-gradient(135deg, #f5f3fb 0%, #dddbe3 100%);
         box-shadow: -4px 4px 8px 0px rgba(191, 189, 196, 0.2),
@@ -61,38 +67,6 @@
             4px 4px 10px 0px rgba(191, 189, 196, 0.9);
         min-height: 200px;
         padding: 40px 50px;
-    }
-}
-
-@media screen and (max-width: 1000px) {
-
-    .modal {
-        padding: 0 calc($index * 4);
-
-        &__title {
-            font-size: calc($index * 1.8);
-            margin-bottom: 20px;
-        }
-
-        &__error {
-            font-size: calc($index * 1.1);
-        }
-
-        &__btn {
-            width: 100%;
-            padding: calc($index * 0.8) 10px;
-            margin-top: 20px;
-            margin-bottom: 0;
-        }
-
-        // .modal__content
-
-        &__content {
-            position: relative;
-            z-index: 24;
-            max-width: 540px;
-            min-height: 200px;
-            padding: 30px 30px;
-        }
+        margin-bottom: 5vh;
     }
 }

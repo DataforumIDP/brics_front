@@ -7,7 +7,7 @@ import { downloadListBtnText } from "./downloadListBtn.js"
 
 export function partnerScreenInit() {
     $('.delete-btn').click(deleteList)
-    $('#file').change(regNewUsers)
+    $('.file').change(regNewUsers)
     $('.--name').click(changeOrder)
     getAndFillUsers()
     $('.save-btn').click(updateUserData)
@@ -37,7 +37,7 @@ export function updateParams(key, val) {
 
 function changeOrder() {
     getParams.order = !getParams.order
-    $('.order').removeClass(getParams.order ? '--asc' : '--desc').addClass(!getParams.order ? '--asc' : '--desc') 
+    $('.order').removeClass(getParams.order ? '--asc' : '--desc').addClass(!getParams.order ? '--asc' : '--desc')
     getAndFillUsers()
 }
 
@@ -47,6 +47,7 @@ export async function getAndFillUsers() {
     const [res, err] = await getUserList()
     userList = res.users
     fillUserList(userList)
+    fillMobileList(userList)
     selectedRows = []
 }
 
@@ -72,6 +73,11 @@ function fillUserList(struct) {
     struct.forEach(pasteUserInTable)
 }
 
+function fillMobileList(struct) {
+    $('.mt-item').remove()
+    struct.forEach(pasteUserInMobTable)
+}
+
 function pasteUserInTable(user) {
     $('.table__body .os-content').append(`
         <div d-id="${user.id}" class="table__row">
@@ -81,13 +87,44 @@ function pasteUserInTable(user) {
             <div class="table__item --5">${user.surname} ${user.name} ${user.lastname ?? ''}</div>
             <div class="table__item --3">${user.passport ?? ''}</div>
             <div class="table__item --5">${user.grade ?? ''}</div>
-            <div class="table__item --4 --none">${user.activity ?? ''}</div>
             <div class="table__item --2">
                 <div class="action">
                     <div class="action__ico"></div>
                     <div class="action__body">
                         <div class="action__item --edit-u">Редактировать</div>
                         <div class="action__item --delete-u">Удалить</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `)
+}
+
+function pasteUserInMobTable(user) {
+    $('.mt').append(`
+        <div class="mt__item mt-item" d-id="${user.id}">
+            <div class="mt-item__holder">
+                <div class="open-btn"></div>
+                <div class="input__line">
+                    <h2 class="input__title">ФИО</h2>
+                    <p class="input__value">${user.surname} ${user.name} ${user.lastname ?? ''}</p>
+                </div>
+                <div class="checkbox --user-check"></div>
+            </div>
+            <div class="mt-item__body">
+                <div class="input__line">
+                    <h2 class="input__title">ПАСПОРТ</h2>
+                    <p class="input__value">${user.passport ?? ''}</p>
+                </div>
+                <div class="input__line">
+                    <h2 class="input__title">ДОЛЖНОСТЬ</h2>
+                    <p class="input__value">${user.grade ?? ''}</p>
+                </div>
+                <div class="input__line">
+                    <h2 class="input__title">Действие</h2>
+                    <div class="btns">
+                        <div class="del-u-mobile --delete-u"></div>
+                        <div class="edit-u-mobile --edit-u"></div>
                     </div>
                 </div>
             </div>
@@ -102,11 +139,11 @@ export function toggleSelect(val) {
     if (selectedRows.includes(val)) selectedRows = selectedRows.filter(item => item != val)
     else selectedRows.push(val)
 
-    $(".--check-all").attr('val', new Set(selectedRows).size == userList.length ? 'true' : 'false'  )
+    $(".--check-all").attr('val', new Set(selectedRows).size == userList.length ? 'true' : 'false')
     downloadListBtnText(selectedRows)
 }
 
-export async function downloadList () {
+export async function downloadList() {
     const [res, err] = await getpartnerFile()
 
     const href = URL.createObjectURL(res);
@@ -155,7 +192,7 @@ export function toggleAll() {
 export async function deleteUser(id) {
     return new Promise(async resolve => {
         try {
-            
+
             const result = await axios.delete(`https://brics.wpdataforum.ru/api/partner/${id}`, getAuthorizeSettings())
             resolve([result.data, null])
 
@@ -180,7 +217,7 @@ async function regNewUsers() {
     getAndFillUsers()
 }
 
-function displayError (err) {
+function displayError(err) {
     openModal('.error-modal')
     console.log(err);
     $('.modal__error').text(`Строка ${err.errors.table.row} / ${err.errors.table.text}`)
@@ -211,16 +248,17 @@ async function uploadUserFile(file) {
     })
 }
 
-export async function deleteInAction () {
+export async function deleteInAction() {
     const userId = $(this).parent().parent().parent().parent().attr('d-id')
     $('.action.--active').removeClass('--active')
     await deleteUser(userId)
     getAndFillUsers()
 }
 
-export function editInAction () {
+export function editInAction() {
     const userId = $(this).parent().parent().parent().parent().attr('d-id')
     $('.action.--active').removeClass('--active')
+    console.log(userId);
     openEditUser(userId)
 }
 

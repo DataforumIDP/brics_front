@@ -1,8 +1,10 @@
 import { actionInit } from "./modules/actionMenu.js";
+import { burgerMenuInit } from "./modules/burgerMenu.js";
 import { checkboxControl } from "./modules/checkbox.js";
 import { clearEditModal, orgModalInit } from "./modules/editOrg.js";
 import { exit } from "./modules/exit.js";
 import { filtrationInit } from "./modules/filtration.js";
+import { toggleHiddenContent } from "./modules/hidenItem.js";
 import { modal, openModal } from "./modules/modal.js";
 import {
     accreditationInAction,
@@ -29,6 +31,7 @@ actionInit({
     edit: editInAction,
     accr: accreditationInAction
 })
+burgerMenuInit()
 typeListInit()
 
 orgModalInit()
@@ -39,9 +42,13 @@ modal('.modal')
 
 $('.--partner-btn').click(downloadPartnerList)
 $('.download-list-btn').click(downloadAttendeesList)
-$('.exit__content').click(exit)
+$('.exit__content, .--exit').click(exit)
 
-checkboxControl('.--user-check', function () {
+checkboxControl('.--user-check', function (e) {
     const userId = $(this).parent().parent().attr('d-id')
     toggleSelect(userId)
 })
+
+$('.filtration__holder').click(toggleHiddenContent)
+
+$(document).on('click', '.mt-item__holder', toggleHiddenContent)

@@ -107,6 +107,7 @@ export async function getAndFillUsers() {
     const [res, err] = await getUserList()
     userList = res.users
     fillUserList(userList)
+    fillMobileList(userList)
     selectedRows = []
 }
 
@@ -130,6 +131,11 @@ async function getUserList() {
 function fillUserList(struct) {
     $('.table__row').remove()
     struct.forEach(pasteUserInTable)
+}
+
+function fillMobileList(struct) {
+    $('.mt-item').remove()
+    struct.forEach(pasteUserInMobTable)
 }
 
 function pasteUserInTable(user) {
@@ -163,6 +169,43 @@ function pasteUserInTable(user) {
     `)
 }
 
+function pasteUserInMobTable(user) {
+    $('.mt').append(`
+        <div class="mt__item mt-item" d-id="${user.id}">
+            <div class="mt-item__holder">
+                <div class="open-btn"></div>
+                <div class="input__line">
+                    <h2 class="input__title --row">ФИО ${user.created ? '<div title="Эта запись добавлена организатором" class="created"></div>' : ''}</h2>
+                    <p class="input__value">${user.surname} ${user.name} ${user.lastname ?? ''}</p>
+                </div>
+                <div class="checkbox --user-check"></div>
+            </div>
+            <div class="mt-item__body">
+                <div class="input__line">
+                    <h2 class="input__title">Тип</h2>
+                    <p class="input__value --row">${convertType(user.type)} ${['smi', 'speacker'].includes(user.type) ? `<span class="accr --${user.accreditation}">${user.accreditation ? 'Аккредитован' : 'Не аккредитован'}</span>` : ''}</p>
+                </div>
+                <div class="input__line">
+                    <h2 class="input__title">ДОЛЖНОСТЬ</h2>
+                    <p class="input__value">${user.grade ?? ''}</p>
+                </div>
+                <div class="input__line">
+                    <h2 class="input__title">ОРГАНИЗАЦИЯ</h2>
+                    <p class="input__value">${user.organization ?? ''}</p>
+                </div>
+                <div class="input__line">
+                    <h2 class="input__title">Действие</h2>
+                </div>
+                <div class="btns">
+                    <div class="del-u-mobile --delete-u"></div>
+                    <div class="edit-u-mobile --edit-u"></div>
+                    ${(['smi', 'speacker'].includes(user.type) && !user.accreditation) ? '<div class="accr-u-mobile --accr-u"></div>' : ''}
+                    
+                </div>
+            </div>
+        </div>
+    `)
+}
 
 const typeList = {
     attendees: 'Участник',

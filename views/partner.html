@@ -17,7 +17,7 @@
 
 <body>
     <div class="wrapper">
-        <main class="main ">
+        <main class="main">
             <div class="main__decor"></div>
 
             <div class="main__conteiner --profile">
@@ -83,7 +83,7 @@
                         <div class="search__clear --none"></div>
                     </div>
                     <div class="header__btns">
-                        <button class="header-btn add-btn btn">Добавить <div class="ico"></div><input type="file" id="file"></button>
+                        <button class="header-btn add-btn btn">Добавить <div class="ico"></div><input type="file" class="file"></button>
                         <a href="./files/partner.xlsx" download class="header-btn load-btn btn">
                             <div class="ico"></div> Скачать шаблон
                         </a>
@@ -93,7 +93,9 @@
                 <div class="conteiner__body body">
                     <div class="table">
                         <div class="table__header">
-                            <div class="table__item --0"><div class="checkbox --check-all"></div></div>
+                            <div class="table__item --0">
+                                <div class="checkbox --check-all"></div>
+                            </div>
                             <div class="table__item --5 --name">ФИО <div class="order"></div>
                             </div>
                             <div class="table__item --3">ПАСпорт</div>
@@ -125,38 +127,126 @@
                     </div>
                 </div>
                 <div class="conteiner__btns">
-                    <button class="btn download-list-btn">Скачать всё</button>
+                    <button class="btn download-list-btn ">Скачать всё</button>
                 </div>
                 <button class="list-btn btn back-to-profile">
                     <div class="back-ico"></div> Профиль
                 </button>
             </div>
         </main>
-        <div class="exit ">
+        <div class="exit">
             <div class="exit__content">
                 <div class="exit__ico"></div>
             </div>
         </div>
-        <div class="mobile --none">
+        <div class="mobile ">
             <header class="mobile__header m-header">
                 <div class="m-header__logo">БРИКС</div>
-                <div class="m-header__btn">
-                    <div class="m-header__line"></div>
-                    <div class="m-header__line"></div>
-                    <div class="m-header__line"></div>
-                </div>
+                <div class="m-header__btn"> </div>
             </header>
-            
-            <menu class="mobile__menu menu --open">
-                <div class="menu__close"></div>
-                <li><button class="menu__item">ПРОФИЛЬ</button></li>
-                <li><button class="menu__item">СПИСОК</button></li>
-                <li><button class="menu__item">СКАЧАТЬ СПРАВОЧНИК</button></li>
-                <li><button class="menu__item">СКАЧАТЬ ШАБЛОН</button></li>
-                <li><button class="menu__item">ВЫХОД</button></li>
-            </menu>
+
+            <div class="mobile__menu menu">
+                <div class="menu__back"></div>
+                <menu class="menu__content">
+                    <div class="menu__close"></div>
+                    <li><button class="menu__item --to-profile">ПРОФИЛЬ</button></li>
+                    <li><button class="menu__item --to-list">СПИСОК</button></li>
+                    <li><a download href="./files/spravochnik.pdf" class="menu__item">СКАЧАТЬ СПРАВОЧНИК</a></li>
+                    <li><a download href="./files/partner.xlsx" class="menu__item">СКАЧАТЬ ШАБЛОН</a></li>
+                    <li><button class="menu__item --exit">ВЫХОД</button></li>
+                </menu>
+            </div>
+            <div class="mobile__content --profile">
+                <div class="content__text">
+                    <h1 class="content__title">Профиль</h1>
+                    <div class="line">
+                        <h1 class="content__subtitle">Партнёра</h1>
+                        <div class="subtitle__decor"></div>
+                    </div>
+                    <div class="mob-inputs --views">
+                        <div class="content__input input">
+                            <h2 class="input__title">Название компании</h2>
+                            <p class="input__value --organization">Dataforum</p>
+                        </div>
+                        <div class="content__input input">
+                            <h2 class="input__title">Сайт</h2>
+                            <p class="input__value --site">https://dataforum.pro</p>
+                        </div>
+                        <div class="content__input input">
+                            <h2 class="input__title">Краткое описание</h2>
+                            <p class="input__value --description">Техническое обеспечение мероприятия световым, звуковым, видео- и конференц-оборудованием</p>
+                        </div>
+                        <div class="content__input input ">
+                            <h2 class="input__title">Контакты:</h2>
+                            <p class="input__value --contacts">Телефон: 8 (812) 454-50-90</p>
+                        </div>
+                    </div>
+                    <div class="mob-inputs --edit --none">
+                        <div class="edit-input">
+                            <h3 class="edit-input__title">Название компании <span>*</span></h3>
+                            <input type="text" maxlengdiv="200" class="edit-input__inp --e-organization">
+                        </div>
+                        <div class="edit-input">
+                            <h3 class="edit-input__title">Сайт <span>*</span></h3>
+                            <input type="text" maxlengdiv="200" class="edit-input__inp --e-site">
+                        </div>
+                        <div class="edit-input">
+                            <h3 class="edit-input__title">ФИО ответстственного лица<span>*</span></h3>
+                            <input type="text" maxlengdiv="200" class="edit-input__inp --e-description">
+                        </div>
+                        <div class="edit-input">
+                            <h3 class="edit-input__title">Контакты ответственного лица<span>*</span></h3>
+                            <textarea maxlengdiv="200" class="edit-input__inp --e-contacts"></textarea>
+                        </div>
+                    </div>
+                    <div class="company-logo"></div>
+                </div>
+            </div>
+
+            <div class="mobile__content --user-list --none">
+                <div class="mobile__table-header">
+                    <div class="header__search search">
+                        <input type="text" class="search__inp">
+                        <div class="search__ico"></div>
+                        <div class="search__clear --none"></div>
+                    </div>
+                    <div class="download-list-btn download-mob-btn"></div>
+                    <div class="delete-btn"></div>
+                </div>
+                <div class="mobile__table mt">
+                    <!-- <div class="mt__item mt-item" d-id="1">
+                        <div class="mt-item__holder">
+                            <div class="open-btn"></div>
+                            <div class="input__line">
+                                <h2 class="input__title">ФИО</h2>
+                                <p class="input__value --organization">Dataforum</p>
+                            </div>
+                            <div class="checkbox --user-check"></div>
+                        </div>
+                        <div class="mt-item__body">
+                            <div class="input__line">
+                                <h2 class="input__title">ПАСПОРТ</h2>
+                                <p class="input__value">4029 588860</p>
+                            </div>
+                            <div class="input__line">
+                                <h2 class="input__title">ДОЛЖНОСТЬ</h2>
+                                <p class="input__value">Главный заместитель </p>
+                            </div>
+                            <div class="input__line">
+                                <h2 class="input__title">Действие</h2>
+                            </div>
+                            <div class="btns">
+                                <div class="del-u-mobile --delete-u"></div>
+                                <div class="edit-u-mobile --edit-u"></div>
+                            </div>
+                        </div> -->
+                    <!-- </div> -->
+                </div>
+            </div>
+            <button class="btn --mob-add-btn --none">Добавить <div class="add-ico"></div><input type="file" class="file"></button>
+            <button class="btn --mob-edit-btn">Редактировать профиль <div class="edit-ico"></div></button>
         </div>
-        <div class="modal edit-modal --none">
+        <div class="modal edit-modal">
             <div class="modal__back"></div>
             <div class="modal__content">
                 <div class="modal__header">

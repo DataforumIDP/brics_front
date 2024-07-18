@@ -213,6 +213,7 @@ const typeList = {
     org: 'Организатор',
     vip: 'VIP',
     stuff: 'Тех. персонал',
+    green: 'Зеленый БРИКС',
 }
 
 export function convertType(type) {

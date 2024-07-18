@@ -162,6 +162,14 @@ const content = [
         }
     },
     {
+        selector: '[d-type="green"]',
+        attr: 'text',
+        text: {
+            ru: 'Зеленый БРИКС',
+            en: 'Green BRICS'
+        }
+    },
+    {
         selector: '[d-type="speacker"]',
         attr: 'text',
         text: {

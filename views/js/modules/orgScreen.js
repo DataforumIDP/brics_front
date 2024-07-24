@@ -2,6 +2,7 @@ import { getAuthorizeSettings } from "./authorizeSetting.js"
 import { downloadFileFromRes } from "./downloadFileFromRes.js"
 import { downloadListBtnText } from "./downloadListBtn.js"
 import { openEditUser } from "./editOrg.js"
+import { openModal } from "./modal.js"
 import { getToken } from "./token.js"
 
 

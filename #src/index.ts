@@ -50,6 +50,11 @@ app.get('*.*', (req, res) => {
     });
 });
 
+app.use((req, res, next) => {
+    let htmlPath = path.join(__dirname, '../views/404.html')
+    res.sendFile(htmlPath)
+});
+
 
 const PORT = 3226;
 

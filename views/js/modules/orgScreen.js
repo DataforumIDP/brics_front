@@ -4,6 +4,7 @@ import { downloadListBtnText } from "./downloadListBtn.js"
 import { openEditUser } from "./editOrg.js"
 import { openModal } from "./modal.js"
 import { getToken } from "./token.js"
+import { convertType } from "./typeList.js"
 
 
 export function orgscreenInit() {
@@ -204,21 +205,6 @@ function pasteUserInMobTable(user) {
             </div>
         </div>
     `)
-}
-
-const typeList = {
-    attendees: 'Участник',
-    partner: 'Партнер',
-    smi: 'СМИ',
-    speacker: 'Спикер',
-    org: 'Организатор',
-    vip: 'VIP',
-    stuff: 'Тех. персонал',
-    green: 'Зеленый БРИКС',
-}
-
-export function convertType(type) {
-    return typeList[type]
 }
 
 export async function deleteUser(id) {

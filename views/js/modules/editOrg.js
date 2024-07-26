@@ -1,46 +1,62 @@
 import { getAuthorizeSettings } from "./authorizeSetting.js";
 import { awaiting } from "./awaiting.js";
 import { different } from "./editPartner.js";
+import { CustomForm } from "./formController.js";
 import { closeModal, openModal } from "./modal.js";
-import { convertType, getUser } from "./orgScreen.js";
+import { getUser } from "./orgScreen.js";
 import { getAndFillUsers } from "./orgScreen.js";
+import { convertType, CustomList } from "./typeList.js";
+import { isEmptyObject } from "./utils/isEmptyObject.js";
 
 
 
 let editedUser = {}
-let editedUserProccesed = {}
+let editForm = new CustomForm('.edit-modal', saveEdit)
 
 export async function orgModalInit() {
 
+    new CustomList('.edit-type-list', (type) => {
+        editForm.setValue('type', type)
+    })
+
     $('.accreditation__btn').click((e) => {
+        console.log(1234);
         e.stopPropagation();
-        editedUserProccesed.accreditation = true
+        editForm.setValue('accreditation', true)
         $('.accreditation').addClass('--true')
         $('.accreditation__holder').text('Аккредитован')
         $('.accreditation__btn').addClass('--none')
     })
-
-    $('.list__item').click(updateType)
-
-    $('.save-btn').click(saveEdit)
+    
+    $('.accreditation__holder').click(e => {
+        e.stopPropagation();
+        $('.accreditation__btn').removeClass('--none')
+    })
 }
 
 export async function openEditUser(id) {
-
     editedUser = getUser(id)
-    editedUserProccesed = JSON.parse(JSON.stringify(getUser(id)))
     clearEditModal()
+
+    editForm.clear().fill(
+        { 
+            ...editedUser, 
+            fio: `${editedUser.surname} ${editedUser.name} ${editedUser.lastname ?? ''}`,
+            type: convertType(editedUser.type) 
+        }
+    ).setValue('type', editedUser.type)
+    
+    settingUpUserData(editedUser)
     openModal('.edit-modal')
-    fillUserData(editedUserProccesed)
 }
 
 export function clearEditModal() {
     $('.edit-input').removeClass('--readonly').removeClass('--none')
-    $('.edit-input__inp').val('').removeAttr('readonly')
+    $('.edit-input__inp').val('')
     $('.accreditation').removeClass('--true').find('.accreditation__holder').text('Не аккредитован').addClass('--none')
 }
 
-function fillUserData(user) {
+function settingUpUserData(user) {
 
     if (user.partner_id) {
         $('.--e-mail').attr('readonly', true).parent().addClass('--none')
@@ -60,16 +76,6 @@ function fillUserData(user) {
 
     $('.--id span').text(user.id)
     $('.--date span').text(`${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`)
-    $('.--e-fio').val(`${user.surname} ${user.name} ${user.lastname ?? ''}`)
-
-    $('.--e-passport').val(user.passport)
-    $('.--e-organization').val(user.organization)
-    $('.--e-grade').val(user.grade)
-    $('.--e-type').val(convertType(user.type))
-    $('.--e-country').val(user.country)
-    $('.--e-city').val(user.city)
-    $('.--e-mail').val(user.mail)
-    $('.--e-phone').val(user.phone)
 
     if (['smi', 'speacker'].includes(user.type)) {
         $('.accreditation__holder').removeClass('--none')
@@ -79,43 +85,29 @@ function fillUserData(user) {
     }
 }
 
-function updateType(e) {
-    e.stopPropagation()
-    const type = $(e.target).attr('d-type')
-    editedUserProccesed.type = type
-    if (['smi', 'speacker'].includes(type)) {
-        $('.accreditation__holder').removeClass('--none')
-    } else {
-        $('.accreditation__holder').addClass('--none')
-    }
-    $('.--e-type').val(convertType(type))
-    $('.type-list').addClass('--none')
-}
 
-async function saveEdit() {
+async function saveEdit(data) {
 
-    editedUserProccesed.name = ($('.--e-fio').val()).trim().split(' ')[1] ?? null
-    editedUserProccesed.surname = ($('.--e-fio').val()).trim().split(' ')[0] ?? null
-    editedUserProccesed.lastname = ($('.--e-fio').val()).trim().split(' ')[2] ?? null
-    editedUserProccesed.passport = $('.--e-passport').val()
-    editedUserProccesed.organization = $('.--e-organization').val()
-    editedUserProccesed.grade = $('.--e-grade').val()
-    editedUserProccesed.country = $('.--e-country').val()
-    editedUserProccesed.city = $('.--e-city').val()
-    editedUserProccesed.mail = $('.--e-mail').val()
-    editedUserProccesed.phone = $('.--e-phone').val()
+    data.name = data.fio.trim().split(' ')[1] ?? null
+    data.surname = data.fio.trim().split(' ')[0] ?? null
+    data.lastname = data.fio.trim().split(' ')[2] ?? null
 
-    const processedData = different(editedUserProccesed, editedUser)
-    
+    const processedData = different({...data, fio: undefined}, editedUser)
+
+    if (isEmptyObject(processedData)) return closeModal('.edit-modal')
+        
     const [res, err] = await sendUpdate(editedUser.id, processedData)
-    if (err !== null) return false
+
+    // Сделать обработку ошибок
+    // if (err !== null) return false
+
     closeModal('.edit-modal')
     getAndFillUsers()
 }
 
 async function sendUpdate(id, data) {
     try {
-            
+
         const result = await axios.patch(`https://brics.wpdataforum.ru/api/admin/attendees/${id}`, data, getAuthorizeSettings())
         return [result.data, null]
 

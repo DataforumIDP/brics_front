@@ -464,11 +464,11 @@ $index: calc(1vw + 1vh);
         font-weight: 400;
         white-space: nowrap;
         &.add-btn {
-            background: #3769fa;
-            color: #fff;
+            background: #3769fa !important;
+            color: #fff !important;
             &:hover {
                 border: 1px solid #2c49da;
-                background: #537fff;
+                background: #537fff !important;
             }
         }
     }

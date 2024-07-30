@@ -26,11 +26,6 @@ $index: calc(1vw + 1vh);
     }
 }
 
-.mobile, .main {
-    position: relative;
-    z-index: 20;
-}
-
 .main {
     position: absolute;
     z-index: 5;

@@ -36,7 +36,7 @@ $index: calc(1vw + 1vh);
         align-items: stretch;
         gap: 55px;
         position: relative;
-        z-index: 10;
+        z-index: 22;
         &.--users {
             padding: 32px 28px;
             flex-direction: column;
@@ -337,7 +337,6 @@ $index: calc(1vw + 1vh);
     position: absolute;
     top: -40px;
     right: -40px;
-    z-index: 3;
 
     // .exit__content
 
@@ -1164,7 +1163,7 @@ $index: calc(1vw + 1vh);
 }
 
 
-.mobile, .main {
+.mobile {
     position: relative;
     z-index: 20;
 }

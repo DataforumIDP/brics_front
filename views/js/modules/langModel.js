@@ -165,7 +165,7 @@ const content = [
         selector: '[d-type="green"]',
         attr: 'text',
         text: {
-            ru: 'Зеленый БРИКС',
+            ru: 'Участник "Зеленый БРИКС"',
             en: 'Green BRICS'
         }
     },
